@@ -13,7 +13,7 @@ namespace BookSiteProject.Domain.Entities
     }
     public class Book
     {
-        public required int Id { get; set; }
+        public  int Id { get; set; }
         public string Title { get; set; } = default!;
         public string? Description { get; set; } 
         public short? YearOfPublication { get; set; }

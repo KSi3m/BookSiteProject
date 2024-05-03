@@ -8,7 +8,7 @@ namespace BookSiteProject.Domain.Entities
 {
     public class Category
     {
-        public required int Id { get; set; }
+        public  int Id { get; set; }
         public string Name { get; set; } = default!;
         public List<Book> Books { get; set; } = [];
     }

@@ -14,9 +14,10 @@ namespace BookSiteProject.Infrastructure.Persistence
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BookSiteProjectDB;Trusted_Connection=True;");
+        public BookSiteProjectDbContext(DbContextOptions<BookSiteProjectDbContext> options) :base(options) { 
+        
         }
+
+       
     }
 }

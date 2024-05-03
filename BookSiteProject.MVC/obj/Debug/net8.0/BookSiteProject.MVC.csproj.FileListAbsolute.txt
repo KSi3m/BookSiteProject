@@ -29,3 +29,9 @@ E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\refint\BookSiteP
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\BookSiteProject.MVC.pdb
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\BookSiteProject.MVC.genruntimeconfig.cache
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\ref\BookSiteProject.MVC.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\BookSiteProject.Application.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\BookSiteProject.Domain.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\BookSiteProject.Application.pdb
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\BookSiteProject.Domain.pdb
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\BookSiteProject.MVC.csproj.AssemblyReference.cache
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\obj\Debug\net8.0\BookSite.4B11C65F.Up2Date

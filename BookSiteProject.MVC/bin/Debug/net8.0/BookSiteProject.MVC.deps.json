@@ -7,14 +7,40 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "BookSiteProject.MVC/1.0.0": {
+        "dependencies": {
+          "BookSiteProject.Application": "1.0.0"
+        },
         "runtime": {
           "BookSiteProject.MVC.dll": {}
+        }
+      },
+      "BookSiteProject.Application/1.0.0": {
+        "dependencies": {
+          "BookSiteProject.Domain": "1.0.0"
+        },
+        "runtime": {
+          "BookSiteProject.Application.dll": {}
+        }
+      },
+      "BookSiteProject.Domain/1.0.0": {
+        "runtime": {
+          "BookSiteProject.Domain.dll": {}
         }
       }
     }
   },
   "libraries": {
     "BookSiteProject.MVC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookSiteProject.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookSiteProject.Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

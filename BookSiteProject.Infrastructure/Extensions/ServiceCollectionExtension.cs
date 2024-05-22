@@ -1,4 +1,7 @@
-﻿using BookSiteProject.Infrastructure.Persistence;
+﻿using BookSiteProject.Application.Services;
+using BookSiteProject.Domain.Interfaces;
+using BookSiteProject.Infrastructure.Persistence;
+using BookSiteProject.Infrastructure.Repostories;
 using BookSiteProject.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +23,11 @@ namespace BookSiteProject.Infrastructure.Extensions
             services.AddDbContext<BookSiteProjectDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddScoped<BookSiteSeeder>();
+
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
         }
     }
 }

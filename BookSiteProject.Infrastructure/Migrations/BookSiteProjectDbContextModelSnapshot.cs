@@ -75,6 +75,9 @@ namespace BookSiteProject.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ISBN")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<short?>("Price")
                         .HasColumnType("smallint");
 

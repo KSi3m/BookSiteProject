@@ -2,12 +2,14 @@ using BookSiteProject.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using BookSiteProject.Infrastructure.Extensions;
 using BookSiteProject.Infrastructure.Seeders;
+using BookSiteProject.Application.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 var scope = app.Services.CreateScope();

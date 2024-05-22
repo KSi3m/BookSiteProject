@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var action = ViewContext.RouteData.Values["Action"]!.ToString();
+    var controller = ViewContext.RouteData.Values["Controller"]!.ToString();
+
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,10 +27,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark @((controller == "Home" && action == "Index") ? "bg-light" : "" )" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark @(controller == "Home" && action == "Privacy" ? "bg-light" : "" )" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller == "Book" && action == "Index" ? "bg-light" : "" )" asp-area="" asp-controller="Book" asp-action="Index">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark @(controller == "Category" && action == "Index" ? "bg-light" : "" )" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
                     </ul>
                 </div>

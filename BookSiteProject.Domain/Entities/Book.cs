@@ -13,12 +13,14 @@ namespace BookSiteProject.Domain.Entities
     }
     public class Book
     {
-        public  int Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; } = default!;
         public string? Description { get; set; } 
         public short? YearOfPublication { get; set; }
         public string? Publisher {  get; set; }
         public short? Price {  get; set; }
+
+        public string? ISBN { get; set; }
 
         public TypeOfBookOwnership typeOfBookOwnership { get; set; }
 

@@ -263,3 +263,6 @@ E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\runtimes\win\lib
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\MediatR.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\MediatR.Contracts.dll
+E:\C#\book\BookSiteProject\BookSiteProject.MVC\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

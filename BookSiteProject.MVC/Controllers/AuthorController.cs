@@ -2,22 +2,25 @@
 using BookSiteProject.Application.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
+using BookSiteProject.Application.Commands.CreateAuthor;
+using MediatR;
+using BookSiteProject.Application.Queries.GetAllAuthorsDto;
 
 namespace BookSiteProject.MVC.Controllers
 {
     public class AuthorController : Controller
     {
-             private readonly IAuthorService _authorService;
+        private readonly IMediator _mediator;
 
-        public AuthorController(IAuthorService authorService)
+        public AuthorController(IMediator mediator)
         {
-            _authorService = authorService;
+            _mediator= mediator;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var authors = await _authorService.GetAllAuthorsDto();
+            var authors = await _mediator.Send(new GetAllAuthorsDtoQuery());
             return View(authors);
         }
 
@@ -27,14 +30,14 @@ namespace BookSiteProject.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(AuthorDto authorDto)
+        public async Task<IActionResult> Create(CreateAuthorCommand command)
         {
             if (!ModelState.IsValid)
             {
                 await Console.Out.WriteLineAsync("TtT");
                 return View();
             }
-            await _authorService.Create(authorDto);
+            await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
 

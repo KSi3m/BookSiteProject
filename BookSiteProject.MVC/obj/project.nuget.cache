@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4cvU1yOAPeqAxzXhw1IvMh0KzZVyUfKROVe6vD9ypvtEaahrQFyfoBaCbjNWEwD2lQ2Dd+wEKn/1x7I1YXgBsw==",
+  "dgSpecHash": "67tDmxswukB00sg6sfPkYFSQgYRjj6Pr/Vm5vAEJVVnpssJszIcDBW56N048T9BRuaLMQ5Uvv0Qh2WvqwKb0eg==",
   "success": true,
   "projectFilePath": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\BookSiteProject.MVC.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,9 @@
     "C:\\Users\\Mieszko\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\Mieszko\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\Mieszko\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.build\\17.8.3\\microsoft.build.17.8.3.nupkg.sha512",

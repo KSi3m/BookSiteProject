@@ -1,8 +1,9 @@
-﻿using BookSiteProject.Application.Dtos;
+﻿using BookSiteProject.Application.Commands.CreateBook;
 using BookSiteProject.Application.Mappings;
 using BookSiteProject.Application.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,15 @@ namespace BookSiteProject.Application.Extensions
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            services.AddScoped<IBookService,BookService>();
-            services.AddScoped<IAuthorService, AuthorService>();
-            services.AddScoped<ICategoryService, CategoryService>();
+            //services.AddScoped<IBookService,BookService>();
+
+            services.AddMediatR(typeof(CreateBookCommand));
+            //services.AddScoped<IAuthorService, AuthorService>();
+            //services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAutoMapper(typeof(BookMappingProfile));
 
-            services.AddValidatorsFromAssemblyContaining<BookDtoValidator>()
+            services.AddValidatorsFromAssemblyContaining<CreateBookCommandValidator>()
                 //.AddValidatorsFromAssemblyContaining<CategoryDtoValidator>()
                 //.AddValidatorsFromAssemblyContaining<AuthorDtoValidator>()
                 .AddFluentValidationAutoValidation()

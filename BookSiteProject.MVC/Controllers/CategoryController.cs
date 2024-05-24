@@ -3,16 +3,19 @@ using BookSiteProject.Application.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using BookSiteProject.Domain.Entities;
+using MediatR;
+using BookSiteProject.Application.Commands.CreateCategory;
+using BookSiteProject.Application.Queries.GetAllCategoriesDto;
 
 namespace BookSiteProject.MVC.Controllers
 {
     public class CategoryController: Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly IMediator _mediator;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(IMediator mediator)
         {
-            _categoryService = categoryService;
+            _mediator = mediator; 
         }
 
 
@@ -20,7 +23,7 @@ namespace BookSiteProject.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var categories = await _categoryService.GetAllCategoriesDto();
+            var categories = await _mediator.Send(new GetAllCategoriesDtoQuery());
             return View(categories);
         }
 
@@ -30,14 +33,14 @@ namespace BookSiteProject.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CategoryDto category)
+        public async Task<IActionResult> Create(CreateCategoryCommand command)
         {
             if (!ModelState.IsValid)
             {
                 await Console.Out.WriteLineAsync("TtT");
                 return View();
             }
-            await _categoryService.Create(category);
+            await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
     }

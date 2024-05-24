@@ -1,4 +1,5 @@
-﻿using BookSiteProject.Domain.Interfaces;
+﻿using BookSiteProject.Application.Dtos;
+using BookSiteProject.Domain.Interfaces;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -6,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Dtos
+namespace BookSiteProject.Application.Commands.CreateBook
 {
-    public class BookDtoValidator: AbstractValidator<BookDto>   
+    public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
     {
-        public BookDtoValidator(IBookRepository bookRepository)
+        public CreateBookCommandValidator(IBookRepository bookRepository)
         {
             RuleFor(x => x.Title)
                 .NotEmpty()
@@ -29,7 +30,7 @@ namespace BookSiteProject.Application.Dtos
             .Custom((value, context) =>
             {
                 var bookFromDb = bookRepository.GetByISBN(value).Result;
-                if(bookFromDb != null)
+                if (bookFromDb != null)
                 {
                     context.AddFailure("ISBN unique number already exist!");
                 }

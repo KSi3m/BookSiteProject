@@ -11,6 +11,7 @@ namespace BookSiteProject.Domain.Interfaces
     {
         Task Create(Book book);
         Task<IEnumerable<Book>> GetAll();
+        Task<Book> GetBookByEncodedName(string encodedName);
         Task<Book?> GetByISBN(string ISBN);
     }
 }

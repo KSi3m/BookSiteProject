@@ -1,5 +1,6 @@
 ﻿using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
+using BookSiteProject.Infrastructure.Migrations;
 using BookSiteProject.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,6 @@ namespace BookSiteProject.Infrastructure.Repostories
         {
             this._dbcontext = dbcontext;
         }
-
-
-
         public async Task Create(Book book)
         {
             _dbcontext.Add(book);
@@ -33,6 +31,13 @@ namespace BookSiteProject.Infrastructure.Repostories
                 .Include(b => b.Category)
                 .Include(b => b.Authors)
                 .ToListAsync();
+        }
+
+        public async Task<Book> GetBookByEncodedName(string encodedName)
+        {
+          
+            return await _dbcontext.Books.Include(b => b.Category)
+                .Include(b => b.Authors).FirstAsync(c=>c.EncodedName == encodedName);
         }
 
         public async Task<Book?> GetByISBN(string ISBN)

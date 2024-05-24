@@ -1,6 +1,12 @@
-﻿using BookSiteProject.Application.Dtos;
+﻿using BookSiteProject.Application.Commands.CreateBook;
+using BookSiteProject.Application.Dtos;
+using BookSiteProject.Application.Queries.GetAllAuthors;
+using BookSiteProject.Application.Queries.GetAllBooks;
+using BookSiteProject.Application.Queries.GetAllCategories;
+using BookSiteProject.Application.Queries.GetBookByEncodedName;
 using BookSiteProject.Application.Services;
 using BookSiteProject.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -9,40 +15,35 @@ namespace BookSiteProject.MVC.Controllers
 {
     public class BookController: Controller
     {
-        private readonly IBookService _bookservice;
-        private readonly ICategoryService _categoryService;
-        private readonly IAuthorService _authorService;
+        
+        private readonly IMediator _mediator;
 
-        public BookController(IBookService bookservice, ICategoryService categoryService, IAuthorService authorService)
+        public BookController(IMediator mediator)
         {
-            _bookservice = bookservice;
-            _categoryService = categoryService;
-            _authorService = authorService;
+            _mediator= mediator;
         }
-
 
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var books = await _bookservice.GetAll();
+            var books = await _mediator.Send(new GetAllBooksQuery());
             return View(books);
         }
 
             [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var cats = await _categoryService.GetAll();
-  
-            var authors = await _authorService.GetAuthors();
+            var authors = await _mediator.Send(new GetAllAuthorsQuery());
             var authorList = authors.Select(a => new SelectListItem 
             { 
                 Value = a.Id.ToString(), 
                 Text = a.Firstname + " " + a.Surname 
             }).ToList();
             ViewBag.Authors = authorList;
-   
-            var categoryItems = cats.Select(c => new SelectListItem
+
+            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            var categoryItems = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(), 
                 Text = c.Name 
@@ -51,22 +52,23 @@ namespace BookSiteProject.MVC.Controllers
             ViewBag.Categories = categoryItems;
             return View();
         }
+
         [HttpPost]
-        public async Task<IActionResult> Create(BookDto book)
+        public async Task<IActionResult> Create(CreateBookCommand command)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            foreach(var x in errors)
-            {
-                await Console.Out.WriteLineAsync(x.ErrorMessage);
-            }
             if (!ModelState.IsValid)
             {
-                await Console.Out.WriteLineAsync("TtT");
-                return View();
+                return View(command);
             }
-           
-            await _bookservice.Create(book);
+            await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
+        }
+
+        [Route("Book/{encodedName}/Details")]
+        public async Task<IActionResult> Details(string encodedName)
+        {
+            var dto = await _mediator.Send(new GetBookByEncodedNameQuery(encodedName));
+            return View(dto);
         }
 
     }

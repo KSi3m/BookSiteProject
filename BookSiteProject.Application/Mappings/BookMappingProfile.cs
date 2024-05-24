@@ -17,8 +17,8 @@ namespace BookSiteProject.Application.Mappings
         public BookMappingProfile()
         {
      
-            CreateMap<AuthorDto, Author>().ReverseMap(); 
-            CreateMap<CategoryDto, Category>();
+            CreateMap<AuthorDto, Author>().ReverseMap();
+            CreateMap<CategoryDto, Category>().ReverseMap();
            /* CreateMap<Category, CategoryDto>()
                 .ForMember(dest => dest.BooksIds, opt => opt.MapFrom(src => src.Books.Select(a => a.Id)));*/
 

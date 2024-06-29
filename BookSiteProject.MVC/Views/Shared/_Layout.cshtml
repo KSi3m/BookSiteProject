@@ -1,6 +1,6 @@
 ﻿@{
-    var action = ViewContext.RouteData.Values["Action"]!.ToString();
-    var controller = ViewContext.RouteData.Values["Controller"]!.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
 
 
 }
@@ -39,6 +39,7 @@
                             <a class="nav-link text-dark @(controller == "Category" && action == "Index" ? "bg-light" : "" )" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
                         </li>
                     </ul>
+                    <partial name = "_LoginPartial"/>
                 </div>
             </div>
         </nav>

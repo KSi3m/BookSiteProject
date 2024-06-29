@@ -1,8 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "XfJKdCBT54vWEtr9m/J0fqWswPfMIazyheTv9YYIz+FpZTLbu6oh1VPh006774t8Nwk/BLKrP8BK11S0wE5d2A==",
+  "dgSpecHash": "jyLRJ0fcQJa0TYy3vq4C+qTs6jToUPNy5ja5vQJHAAHLGJDoxZLLtmVaMVp8EU3In7+lF1ONC+Y4QNV10OA5Ag==",
   "success": true,
   "projectFilePath": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.Domain\\BookSiteProject.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.6\\microsoft.aspnetcore.cryptography.internal.8.0.6.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.6\\microsoft.aspnetcore.cryptography.keyderivation.8.0.6.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.0\\microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.identity.core\\8.0.6\\microsoft.extensions.identity.core.8.0.6.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.identity.stores\\8.0.6\\microsoft.extensions.identity.stores.8.0.6.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.logging\\8.0.0\\microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\Mieszko\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

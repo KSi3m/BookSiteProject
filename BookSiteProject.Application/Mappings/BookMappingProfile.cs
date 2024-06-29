@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookSiteProject.Application.ApplicationUser;
+using BookSiteProject.Application.Commands.BookCommands.CreateBook;
 using BookSiteProject.Application.Dtos;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
@@ -14,9 +16,9 @@ namespace BookSiteProject.Application.Mappings
     public class BookMappingProfile: Profile
     {
 
-        public BookMappingProfile()
+        public BookMappingProfile(IUserContext userContext)
         {
-     
+            var user = userContext.GetCurrentUser();
             CreateMap<AuthorDto, Author>().ReverseMap();
             CreateMap<CategoryDto, Category>().ReverseMap();
            /* CreateMap<Category, CategoryDto>()
@@ -28,9 +30,13 @@ namespace BookSiteProject.Application.Mappings
            ;
 
             CreateMap<Book, BookDto>()
+            .ForMember(dest => dest.IsEditable, opt => opt.MapFrom(src => user != null && (src.CreatedById == user.Id || user.IsInRole("Moderator"))))
             .ForMember(dest => dest.typeOfBookOwnership, opt => opt.MapFrom(src => (int)src.typeOfBookOwnership))
             .ForMember(dest => dest.AuthorsIds, opt => opt.MapFrom(src => src.Authors.Select(a => a.Id)))
             .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category != null ? src.Category.Id : (int?)null));
+
+            CreateMap<BookDto, EditBookCommand>();
+                
 
         }
     }

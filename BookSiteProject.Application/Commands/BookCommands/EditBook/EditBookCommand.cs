@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.CreateBook
+namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 {
-    public class CreateBookCommand: BookDto, IRequest
+    public class EditBookCommand: BookDto,IRequest
     {
     }
 }

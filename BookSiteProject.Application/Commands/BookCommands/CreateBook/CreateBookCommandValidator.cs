@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.CreateBook
+namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 {
     public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
     {

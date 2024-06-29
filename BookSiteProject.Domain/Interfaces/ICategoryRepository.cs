@@ -13,7 +13,7 @@ namespace BookSiteProject.Domain.Interfaces
         //void Create(Category category);
         Task<IEnumerable<Category>> GetAll();
         Task<Category> GetCategoryById(int? categoryId);
-        //Task<Category?> GetCategoryByName(string name);
-        Category? GetCategoryByName(string name);
+        Task<Category> GetCategoryByName(string name);
+        //Category? GetCategoryByName(string name);
     }
 }

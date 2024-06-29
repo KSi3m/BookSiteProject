@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using BookSiteProject.Domain.Entities;
 using MediatR;
 using BookSiteProject.Application.Commands.CreateCategory;
-using BookSiteProject.Application.Queries.GetAllCategoriesDto;
+using BookSiteProject.Application.Queries.CategoryQueries.GetAllCategoriesDto;
+using BookSiteProject.Application.Queries.CategoryQueries.GetCategoryByName;
 
 namespace BookSiteProject.MVC.Controllers
 {
@@ -17,7 +18,6 @@ namespace BookSiteProject.MVC.Controllers
         {
             _mediator = mediator; 
         }
-
 
 
         [HttpGet]
@@ -42,6 +42,13 @@ namespace BookSiteProject.MVC.Controllers
             }
             await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
+        }
+
+        [Route("Category/{name}/Details")]
+        public async Task<IActionResult> Details(string name)
+        {
+            var dto = await _mediator.Send(new GetCategoryByNameQuery(name));
+            return View(dto);
         }
     }
 }

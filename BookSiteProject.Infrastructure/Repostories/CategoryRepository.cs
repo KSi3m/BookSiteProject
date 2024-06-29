@@ -35,17 +35,13 @@ namespace BookSiteProject.Infrastructure.Repostories
            return await _dbcontext.Categories.FindAsync(categoryId);
         }
 
-        /*public async Task<Category?> GetCategoryByName(string name)
+        public async Task<Category> GetCategoryByName(string name)
         {
-            if (name == null)
-            {
-                return null;
-            }
             var test = await _dbcontext.Categories
                 .FirstOrDefaultAsync(x => x.Name != null && x.Name.ToLower() == name.ToLower());
             return test;
-        } */
-        public Category? GetCategoryByName(string name)
+        } 
+        /*public Category? GetCategoryByName(string name)
         {
             if (name == null)
             {
@@ -54,6 +50,6 @@ namespace BookSiteProject.Infrastructure.Repostories
             var test =  _dbcontext.Categories
                 .FirstOrDefault(x => x.Name != null && x.Name.ToLower() == name.ToLower());
             return test;
-        }
+        }*/
     }
 }

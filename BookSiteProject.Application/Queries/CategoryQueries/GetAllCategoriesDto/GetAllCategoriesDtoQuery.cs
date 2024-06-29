@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Queries.GetAllCategoriesDto
+namespace BookSiteProject.Application.Queries.CategoryQueries.GetAllCategoriesDto
 {
-    public class GetAllCategoriesDtoQuery: IRequest<IEnumerable<CategoryDto>>
+    public class GetAllCategoriesDtoQuery : IRequest<IEnumerable<CategoryDto>>
     {
     }
 }

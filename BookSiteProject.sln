@@ -5,11 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSiteProject.MVC", "BookSiteProject.MVC\BookSiteProject.MVC.csproj", "{C510FB3D-0ACC-45F5-8E51-4796F654C8D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSiteProject.Domain", "BookSiteProject.Domain\BookSiteProject.Domain.csproj", "{DC57D4BE-9093-4E77-A7B7-2CD89B96C27B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSiteProject.Domain", "BookSiteProject.Domain\BookSiteProject.Domain.csproj", "{DC57D4BE-9093-4E77-A7B7-2CD89B96C27B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSiteProject.Application", "BookSiteProject.Application\BookSiteProject.Application.csproj", "{36D8AD77-4ADA-401C-8A5D-681B19E4C02C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSiteProject.Application", "BookSiteProject.Application\BookSiteProject.Application.csproj", "{36D8AD77-4ADA-401C-8A5D-681B19E4C02C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookSiteProject.Infrastructure", "BookSiteProject.Infrastructure\BookSiteProject.Infrastructure.csproj", "{9BDCC752-A118-48B6-868B-51AF0A43BEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookSiteProject.Infrastructure", "BookSiteProject.Infrastructure\BookSiteProject.Infrastructure.csproj", "{9BDCC752-A118-48B6-868B-51AF0A43BEEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

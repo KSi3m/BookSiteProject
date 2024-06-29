@@ -1,4 +1,5 @@
 ﻿using BookSiteProject.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookSiteProject.Infrastructure.Persistence
 {
-    public class BookSiteProjectDbContext: DbContext
+    public class BookSiteProjectDbContext: IdentityDbContext
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
@@ -16,6 +17,12 @@ namespace BookSiteProject.Infrastructure.Persistence
 
         public BookSiteProjectDbContext(DbContextOptions<BookSiteProjectDbContext> options) :base(options) { 
         
+          
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
 
        

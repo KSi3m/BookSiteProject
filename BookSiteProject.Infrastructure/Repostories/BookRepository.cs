@@ -19,6 +19,17 @@ namespace BookSiteProject.Infrastructure.Repostories
         {
             this._dbcontext = dbcontext;
         }
+
+        public async Task<bool> CheckIfBooksEncodedNameAlreadyInDb(string encodeName)
+        {
+            return await _dbcontext.Books.AnyAsync(x => x.EncodedName == encodeName);
+        }
+
+        public async Task Commit()
+        {
+            await _dbcontext.SaveChangesAsync();
+        }
+
         public async Task Create(Book book)
         {
             _dbcontext.Add(book);

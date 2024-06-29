@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,9 @@ namespace BookSiteProject.Domain.Entities
 
         public string? ISBN { get; set; }
 
+        public string? CreatedById {  get; set; }
+        public IdentityUser? CreatedBy {  get; set; }
+
         public TypeOfBookOwnership typeOfBookOwnership { get; set; }
 
         public List<Author> Authors { get; set; } = [];
@@ -31,7 +35,7 @@ namespace BookSiteProject.Domain.Entities
 
         public void EncodeName()
         {
-            var firstLetters = Authors.Select(author =>
+            /*var firstLetters = Authors.Select(author =>
             {
                 string firstLetterOfFirstname = author.Firstname.Substring(0, 1);
                 string firstLetterOfSurname = author.Surname != null ? author.Surname.Substring(0, 1) : string.Empty;
@@ -39,7 +43,12 @@ namespace BookSiteProject.Domain.Entities
             });
 
 
-            EncodedName = (Title + "-" + string.Join("", firstLetters)).Replace(" ", "-").ToLower();
+            EncodedName = (Title + "-" + string.Join("", firstLetters)).Replace(" ", "-").ToLower();*/
+            if(EncodedName == null)
+            {
+                EncodedName = Guid.NewGuid().ToString("N").Substring(0, 8);
+            }
+            
         }
 
     }

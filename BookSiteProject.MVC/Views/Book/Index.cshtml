@@ -18,6 +18,12 @@
                 <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
                 <p class="card-text">@item.Description</p>
                 <a class="btn btn-primary" asp-controller="Book" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
+                @if(item.IsEditable)
+                {
+                    <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
+                }
+                
+                 
                
             </div>
         </div>

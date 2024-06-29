@@ -1,4 +1,6 @@
-﻿using BookSiteProject.Application.Commands.CreateBook;
+﻿using AutoMapper;
+using BookSiteProject.Application.ApplicationUser;
+using BookSiteProject.Application.Commands.BookCommands.CreateBook;
 using BookSiteProject.Application.Mappings;
 using BookSiteProject.Application.Services;
 using FluentValidation;
@@ -18,12 +20,19 @@ namespace BookSiteProject.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
             //services.AddScoped<IBookService,BookService>();
+            services.AddScoped<IUserContext, UserContext>();
 
             services.AddMediatR(typeof(CreateBookCommand));
             //services.AddScoped<IAuthorService, AuthorService>();
             //services.AddScoped<ICategoryService, CategoryService>();
 
             services.AddAutoMapper(typeof(BookMappingProfile));
+            services.AddScoped(provider => new MapperConfiguration(cfg =>
+            {
+                var scope = provider.CreateScope();
+                var userContext = scope.ServiceProvider.GetRequiredService<IUserContext>();
+                cfg.AddProfile(new BookMappingProfile(userContext));
+            }).CreateMapper());
 
             services.AddValidatorsFromAssemblyContaining<CreateBookCommandValidator>()
                 //.AddValidatorsFromAssemblyContaining<CategoryDtoValidator>()

@@ -13,5 +13,8 @@ namespace BookSiteProject.Domain.Interfaces
         Task<IEnumerable<Book>> GetAll();
         Task<Book> GetBookByEncodedName(string encodedName);
         Task<Book?> GetByISBN(string ISBN);
+
+        Task Commit();
+        Task<bool> CheckIfBooksEncodedNameAlreadyInDb(string encodeName);
     }
 }

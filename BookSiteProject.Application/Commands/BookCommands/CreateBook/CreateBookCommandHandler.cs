@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BookSiteProject.Application.ApplicationUser;
+using BookSiteProject.Application.Commands.BookCommands.CreateBook;
 using BookSiteProject.Application.Dtos;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
@@ -9,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.CreateBook
+namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 {
     public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand>
     {
@@ -17,21 +19,34 @@ namespace BookSiteProject.Application.Commands.CreateBook
         private readonly ICategoryRepository _categoryRepository;
         private readonly IAuthorRepository _authorRepository;
         private readonly IMapper _mapper;
+        private readonly IUserContext _userContext;
         public CreateBookCommandHandler(IBookRepository bookRepository, IAuthorRepository authorRepository,
-                                IMapper mapper, ICategoryRepository categoryRepository)
+                                IMapper mapper, ICategoryRepository categoryRepository,
+                                IUserContext userContext)
         {
-            this._bookRepository = bookRepository;
-            this._authorRepository = authorRepository;
-            this._mapper = mapper;
-            this._categoryRepository = categoryRepository;
+            _bookRepository = bookRepository;
+            _authorRepository = authorRepository;
+            _mapper = mapper;
+            _categoryRepository = categoryRepository;
+            _userContext = userContext;
         }
         public async Task<Unit> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
+            var currentUser = _userContext.GetCurrentUser();
+            if(currentUser == null || !currentUser.IsInRole("Owner") || !currentUser.IsInRole("Admin"))
+            {
+                return Unit.Value;
+            }
             var book = _mapper.Map<Book>(request);
             book.Category = await _categoryRepository.GetCategoryById(request.CategoryId);
             book.Authors = (List<Author>)await _authorRepository.GetAuthorsById(request.AuthorsIds);
-            book.EncodeName();
+            do
+            {
+                book.EncodeName();
+            } while (await _bookRepository.CheckIfBooksEncodedNameAlreadyInDb(book.EncodedName));
 
+
+            book.CreatedById = currentUser.Id;
             await _bookRepository.Create(book);
 
             return Unit.Value;

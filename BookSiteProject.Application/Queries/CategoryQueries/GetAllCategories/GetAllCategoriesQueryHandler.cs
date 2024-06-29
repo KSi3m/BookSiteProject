@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Queries.GetAllCategories
+namespace BookSiteProject.Application.Queries.CategoryQueries.GetAllCategories
 {
     public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery, IEnumerable<Category>>
     {

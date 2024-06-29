@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.Dtos;
-using BookSiteProject.Application.Queries.GetAllAuthors;
-using BookSiteProject.Application.Queries.GetAllCategories;
-using BookSiteProject.Application.Queries.GetAllCategoriesDto;
+using BookSiteProject.Application.Queries.CategoryQueries.GetAllCategories;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
 using MediatR;
@@ -12,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Queries.GetAllCategoriesDto
+namespace BookSiteProject.Application.Queries.CategoryQueries.GetAllCategoriesDto
 {
     public class GetAllCategoriesDtoQueryHandler : IRequestHandler<GetAllCategoriesDtoQuery, IEnumerable<CategoryDto>>
     {

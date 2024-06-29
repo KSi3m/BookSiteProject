@@ -3,6 +3,7 @@ using BookSiteProject.Domain.Interfaces;
 using BookSiteProject.Infrastructure.Persistence;
 using BookSiteProject.Infrastructure.Repostories;
 using BookSiteProject.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,17 @@ namespace BookSiteProject.Infrastructure.Extensions
             services.AddDbContext<BookSiteProjectDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddScoped<BookSiteSeeder>();
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<BookSiteProjectDbContext>();
+
+            services.Configure<IdentityOptions>(opts =>
+            {
+                opts.Lockout.AllowedForNewUsers = true;
+                opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                opts.Lockout.MaxFailedAccessAttempts = 3;
+            });
 
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();

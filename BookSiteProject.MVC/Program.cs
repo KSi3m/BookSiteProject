@@ -33,6 +33,8 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapRazorPages();
 
+app.UseMiddleware<ForcePasswordChangeMiddleware>();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,8 +1,10 @@
 ﻿using BookSiteProject.Application.Services;
+using BookSiteProject.Domain.Entities.Identity;
 using BookSiteProject.Domain.Interfaces;
 using BookSiteProject.Infrastructure.Persistence;
 using BookSiteProject.Infrastructure.Repostories;
 using BookSiteProject.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +27,7 @@ namespace BookSiteProject.Infrastructure.Extensions
 
             services.AddScoped<BookSiteSeeder>();
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BookSiteProjectDbContext>();
 
@@ -41,5 +43,6 @@ namespace BookSiteProject.Infrastructure.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         }
+        
     }
 }

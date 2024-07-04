@@ -1,4 +1,6 @@
 ﻿using BookSiteProject.Domain.Entities;
+using BookSiteProject.Domain.Entities.Identity;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookSiteProject.Infrastructure.Persistence
 {
-    public class BookSiteProjectDbContext: IdentityDbContext
+    public class BookSiteProjectDbContext: IdentityDbContext<ApplicationUser>
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }

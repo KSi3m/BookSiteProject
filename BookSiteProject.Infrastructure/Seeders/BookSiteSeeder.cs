@@ -1,4 +1,6 @@
 ﻿using BookSiteProject.Domain.Entities;
+using BookSiteProject.Domain.Entities.Identity;
+
 using BookSiteProject.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -83,17 +85,18 @@ namespace BookSiteProject.Infrastructure.Seeders
                         });
 
                         var userId = Guid.NewGuid().ToString();
-                        var user = new IdentityUser
+                        var user = new ApplicationUser
                         {
                             Id = userId,
                             UserName = x + "@booksite.com",
-                            Email = x+"@booksite.com",
+                            Email = x + "@booksite.com",
                             EmailConfirmed = true,
-                            NormalizedEmail = x.ToUpper()+"@BOOKSITE.COM",
-                            NormalizedUserName = x.ToUpper() + "@BOOKSITE.COM"
+                            NormalizedEmail = x.ToUpper() + "@BOOKSITE.COM",
+                            NormalizedUserName = x.ToUpper() + "@BOOKSITE.COM",
+                            MustChangePassword = true
                         };
 
-                        var passwordHasher = new PasswordHasher<IdentityUser>();
+                        var passwordHasher = new PasswordHasher<ApplicationUser>();
                         user.PasswordHash = passwordHasher.HashPassword(user, "zaq1@WSX");
 
                         _dbContext.Users.Add(user);
@@ -106,7 +109,7 @@ namespace BookSiteProject.Infrastructure.Seeders
                     }
                     await _dbContext.SaveChangesAsync();
 
-
+                    ///Identity/Account/Manage/ChangePassword
                 }
             }
         }

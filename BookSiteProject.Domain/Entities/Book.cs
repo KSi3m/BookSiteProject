@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using BookSiteProject.Domain.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace BookSiteProject.Domain.Entities
         public string? ISBN { get; set; }
 
         public string? CreatedById {  get; set; }
-        public IdentityUser? CreatedBy {  get; set; }
+        public ApplicationUser? CreatedBy {  get; set; }
 
         public TypeOfBookOwnership typeOfBookOwnership { get; set; }
 

@@ -47,9 +47,9 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
             book.Description = request.Description;
             book.YearOfPublication = request.YearOfPublication;
             book.Publisher = request.Publisher;
-            book.Price = request.Price;
+            //book.Price = request.Price;
             book.ISBN = request.ISBN;
-            book.typeOfBookOwnership = (TypeOfBookOwnership)request.typeOfBookOwnership;
+            //book.typeOfBookOwnership = (TypeOfBookOwnership)request.typeOfBookOwnership;
             book.Category = await _categoryRepository.GetCategoryById(request.CategoryId);
             book.Authors = (List<Author>)await _authorRepository.GetAuthorsById(request.AuthorsIds);
            // book.EncodeName();

@@ -1,4 +1,5 @@
-﻿using BookSiteProject.Domain.Entities;
+﻿using BookSiteProject.Application.ApplicationUser;
+using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
 using BookSiteProject.Infrastructure.Migrations;
 using BookSiteProject.Infrastructure.Persistence;

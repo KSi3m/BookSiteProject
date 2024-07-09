@@ -14,6 +14,7 @@ namespace BookSiteProject.Infrastructure.Persistence
     public class BookSiteProjectDbContext: IdentityDbContext<ApplicationUser>
     {
         public DbSet<Book> Books { get; set; }
+        public DbSet<BookOffer> BookOffers { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Category> Categories { get; set; }
 
@@ -25,6 +26,13 @@ namespace BookSiteProject.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+         
+
+            modelBuilder.Entity<Book>()
+              .HasMany(c => c.BookOffers)
+              .WithOne(s => s.Book)
+              .HasForeignKey(x => x.BookId);
         }
 
        

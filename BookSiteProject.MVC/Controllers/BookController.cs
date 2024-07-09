@@ -7,10 +7,13 @@ using BookSiteProject.Application.Queries.GetAllBooks;
 using BookSiteProject.Application.Queries.GetBookByEncodedName;
 using BookSiteProject.Application.Services;
 using BookSiteProject.Domain.Entities;
+using BookSiteProject.MVC.Extensions;
+using BookSiteProject.MVC.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BookSiteProject.MVC.Controllers
@@ -61,7 +64,7 @@ namespace BookSiteProject.MVC.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Owner,Admin")]
         public async Task<IActionResult> Create(CreateBookCommand command)
         {
             if (!ModelState.IsValid)
@@ -69,6 +72,9 @@ namespace BookSiteProject.MVC.Controllers
                 return View(command);
             }
             await _mediator.Send(command);
+
+            this.SetNotifications(NotificationType.success, "Book created!: " + command.Title);
+
             return RedirectToAction(nameof(Index));
         }
 

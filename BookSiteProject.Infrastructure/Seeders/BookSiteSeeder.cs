@@ -61,7 +61,7 @@ namespace BookSiteProject.Infrastructure.Seeders
                     {
                         Title = "Test1",
                         YearOfPublication = 2004,
-                        typeOfBookOwnership = TypeOfBookOwnership.BORROWED,
+                        /*typeOfBookOwnership = TypeOfBookOwnership.BORROWED,*/
                         Category = category1,
                         Authors = new List<Author> { author1 }
    

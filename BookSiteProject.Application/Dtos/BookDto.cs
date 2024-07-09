@@ -17,11 +17,11 @@ namespace BookSiteProject.Application.Dtos
       
         public short? YearOfPublication { get; set; }
         public string? Publisher { get; set; }
-        public short? Price { get; set; }
+        //public short? Price { get; set; }
 
         public string? ISBN { get; set; }
 
-        public int typeOfBookOwnership { get; set; }
+       // public int typeOfBookOwnership { get; set; }
 
         public IEnumerable<int>? AuthorsIds { get; set; }
        

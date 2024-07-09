@@ -20,19 +20,20 @@ namespace BookSiteProject.Domain.Entities
         public string? Description { get; set; } 
         public short? YearOfPublication { get; set; }
         public string? Publisher {  get; set; }
-        public short? Price {  get; set; }
+        //public short? Price {  get; set; }
 
         public string? ISBN { get; set; }
 
         public string? CreatedById {  get; set; }
         public ApplicationUser? CreatedBy {  get; set; }
 
-        public TypeOfBookOwnership typeOfBookOwnership { get; set; }
+       // public TypeOfBookOwnership typeOfBookOwnership { get; set; }
 
         public List<Author> Authors { get; set; } = [];
         public Category? Category { get; set; }
 
         public string EncodedName { get; private set; } = default!;
+        public List<BookOffer> BookOffers { get; set; } = new();
 
         public void EncodeName()
         {

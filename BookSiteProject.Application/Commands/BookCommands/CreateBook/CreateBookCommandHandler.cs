@@ -33,9 +33,10 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
         public async Task<Unit> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             var currentUser = _userContext.GetCurrentUser();
-            if(currentUser == null || !currentUser.IsInRole("Owner") || !currentUser.IsInRole("Admin"))
+            bool isEditable = currentUser != null && (currentUser.IsInRole("Owner") || currentUser.IsInRole("Admin"));
+            if (!isEditable)
             {
-                return Unit.Value;
+                 return Unit.Value;
             }
             var book = _mapper.Map<Book>(request);
             book.Category = await _categoryRepository.GetCategoryById(request.CategoryId);
@@ -47,8 +48,8 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 
 
             book.CreatedById = currentUser.Id;
-            await _bookRepository.Create(book);
 
+            await _bookRepository.Create(book);
             return Unit.Value;
         }
     }

@@ -39,6 +39,7 @@ namespace BookSiteProject.Infrastructure.Extensions
             });
 
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBookOfferRepository, BookOfferRepository>();
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 

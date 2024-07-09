@@ -26,4 +26,8 @@
     <ProjectReference Include="..\BookSiteProject.Application\BookSiteProject.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
 </Project>

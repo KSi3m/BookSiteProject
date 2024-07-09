@@ -38,25 +38,25 @@
                 <input class="form-control" type="text" asp-for="Publisher" />
 
             </div>
-            <div class="form-group mb-3">
+            @*<div class="form-group mb-3">
                 <label class="control-label" asp-for="Price">Price</label>
                 <input class="form-control" type="text" asp-for="Price" />
 
-            </div>
+            </div>*@
             <div class="form-group mb-3">
                 <label class="control-label" asp-for="ISBN">ISBN</label>
                 <input class="form-control" type="text" asp-for="ISBN" />
                 <span asp-validation-for="ISBN" class="text-danger"></span>
 
             </div>
-            <div class="form-group mb-3">
+           @* <div class="form-group mb-3">
                 <label asp-for="typeOfBookOwnership">Type of Book Ownership:</label>
                 <select asp-for="typeOfBookOwnership">
                     <option value="0">Bought</option>
                     <option value="1">Borrowed</option>
                 </select>
 
-            </div>
+            </div>*@
 
             <div class="form-group mb-3">
                 <label asp-for="CategoryId">Category:</label>

@@ -9,7 +9,7 @@ namespace BookSiteProject.Domain.Entities
 {
     public class BookOffer
     {
-        public enum OfferType { Sale, Rental }
+        public enum OfferType { Sale=0, Rental=1 }
         public enum OfferStatus { Available, Unavailable }
         public int Id { get; set; }      
         public OfferType Type { get; set; }

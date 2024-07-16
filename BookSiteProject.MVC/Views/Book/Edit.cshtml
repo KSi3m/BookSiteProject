@@ -1,4 +1,5 @@
-﻿@model BookSiteProject.Application.Commands.BookCommands.CreateBook.EditBookCommand
+﻿@using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer
+@model BookSiteProject.Application.Commands.BookCommands.CreateBook.EditBookCommand
 
 @{
     ViewData["Title"] = "Edit";
@@ -71,10 +72,17 @@
     </div>
 </div>
 
+
+
 <div>
+    <partial name="_CreateBookOffer" model="new CreateBookOfferCommand() {BookEncodedName = Model.EncodedName} " />
     <a asp-action="Index">Back to List</a>
 </div>
+<p>Offers:</p>
+<div id="offers" class="row" data-encoded-name="@Model.EncodedName"></div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/Book/Edit.js"> </script>
 }

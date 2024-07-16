@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.Commands.BookCommands.CreateBook;
+using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer;
 using BookSiteProject.Application.Dtos;
+using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOffersOfBook;
 using BookSiteProject.Application.Queries.CategoryQueries.GetAllCategories;
 using BookSiteProject.Application.Queries.GetAllAuthors;
 using BookSiteProject.Application.Queries.GetAllBooks;
@@ -39,7 +41,7 @@ namespace BookSiteProject.MVC.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Owner,Admin")]
+        [Authorize(Roles = "Owner,Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
           
@@ -64,7 +66,7 @@ namespace BookSiteProject.MVC.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Owner,Admin")]
+        [Authorize(Roles = "Owner,Admin,Moderator")]
         public async Task<IActionResult> Create(CreateBookCommand command)
         {
             if (!ModelState.IsValid)
@@ -130,5 +132,30 @@ namespace BookSiteProject.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Owner,Admin,Moderator")]
+        [Route("Book/BookOffer")]
+        public async Task<IActionResult> CreateBookOffer(CreateBookOfferCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                //this.SetNotifications(NotificationType.error, "Failed to add book offer!");
+                return BadRequest(ModelState);
+            }
+            await _mediator.Send(command);
+
+
+            //this.SetNotifications(NotificationType.success, "Book offer added!");
+            return Ok();
+        }
+
+        [HttpGet]
+        //[Authorize(Roles = "Owner,Admin,Moderator")]
+        [Route("Book/{encodedName}/BookOffer")]
+        public async Task<IActionResult> GetBookOffers(string encodedName)
+        {
+            var data = await _mediator.Send(new GetBookOffersOfBookQuery() { EncodedName = encodedName });
+            return Ok(data);
+        }
     }
 }

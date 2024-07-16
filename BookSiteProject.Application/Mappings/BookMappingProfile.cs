@@ -37,9 +37,12 @@ namespace BookSiteProject.Application.Mappings
 
             CreateMap<BookDto, EditBookCommand>();
 
-            CreateMap<BookOfferDto, BookOffer>()
-                .ReverseMap();
-                
+            CreateMap<BookOfferDto, BookOffer>();
+                //.ReverseMap();
+            CreateMap<BookOffer, BookOfferDto>();
+                //.ReverseMap();
+           // CreateMap<IEnumerable<BookOffer>, IEnumerable<BookOfferDto>>().ReverseMap();
+
 
         }
     }

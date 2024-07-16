@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Book\\Edit.js",
+      "PackagePath": "staticwebassets\\js\\Book\\Edit.js"
+    },
+    {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

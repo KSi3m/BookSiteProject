@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "11Sdv7Os9Ed6T7QseVIoPtr5MVAVW+ngWNteXYjYvpw=",
+  "Hash": "XRPJ5w+sRDk0d1Y/sBMhH9xHZI5SJso2yVF12rthwnU=",
   "Source": "BookSiteProject.MVC",
   "BasePath": "_content/BookSiteProject.MVC",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Book\\Edit.js",
+      "SourceId": "BookSiteProject.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\",
+      "BasePath": "_content/BookSiteProject.MVC",
+      "RelativePath": "js/Book/Edit.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Book\\Edit.js"
     },
     {
       "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\site.js",

@@ -10,6 +10,6 @@ namespace BookSiteProject.Domain.Interfaces
     public interface IBookOfferRepository
     {
         Task Create(BookOffer bookOffer);
-
+        Task<IEnumerable<BookOffer>> GetAllBookOffersByEncodedName(string bookEncodedName);
     }
 }

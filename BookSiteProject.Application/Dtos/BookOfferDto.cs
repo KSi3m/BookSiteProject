@@ -13,7 +13,7 @@ namespace BookSiteProject.Application.Dtos
         public OfferType Type { get; set; }
         public OfferStatus Status { get; set; }
         public float? Price { get; set; } 
-        public DateTime? DateOfCreation { get; set; }
+        public DateTime DateOfCreation { get; set; }
 
     }
 }

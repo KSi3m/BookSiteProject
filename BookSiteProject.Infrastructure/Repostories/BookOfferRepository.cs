@@ -1,6 +1,7 @@
 ﻿using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
 using BookSiteProject.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,11 @@ namespace BookSiteProject.Infrastructure.Repostories
             await _dbcontext.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<BookOffer>> GetAllBookOffersByEncodedName(string bookEncodedName)
+        {
+            return await _dbcontext.BookOffers
+                .Where(x => x.Book.EncodedName == bookEncodedName)
+                .ToListAsync();
+        }
     }
 }

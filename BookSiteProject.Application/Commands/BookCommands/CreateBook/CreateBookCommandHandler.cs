@@ -33,7 +33,7 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
         public async Task<Unit> Handle(CreateBookCommand request, CancellationToken cancellationToken)
         {
             var currentUser = _userContext.GetCurrentUser();
-            bool isEditable = currentUser != null && (currentUser.IsInRole("Owner") || currentUser.IsInRole("Admin"));
+            bool isEditable = currentUser != null && (currentUser.IsInRole("Owner") || currentUser.IsInRole("Admin") || currentUser.IsInRole("Moderator"));
             if (!isEditable)
             {
                  return Unit.Value;

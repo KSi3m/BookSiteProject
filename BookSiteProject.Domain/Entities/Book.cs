@@ -34,12 +34,13 @@ namespace BookSiteProject.Domain.Entities
 
         public string EncodedName { get; private set; } = default!;
         public List<BookOffer> BookOffers { get; set; } = new();
+        public string? ImagePath { get; set; }  
 
         public void EncodeName()
         {
             /*var firstLetters = Authors.Select(author =>
             {
-                string firstLetterOfFirstname = author.Firstname.Substring(0, 1);
+                string firstLetterOfFirstname = author.Firstnamae.Substring(0, 1);
                 string firstLetterOfSurname = author.Surname != null ? author.Surname.Substring(0, 1) : string.Empty;
                 return firstLetterOfFirstname+firstLetterOfSurname;
             });

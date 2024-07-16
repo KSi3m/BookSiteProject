@@ -26,15 +26,16 @@ namespace BookSiteProject.Application.Mappings
 
 
             CreateMap<BookDto, Book>()
+                 .ForMember(dest => dest.ImagePath, opt => opt.Ignore());
             //.ForMember(dest => dest.typeOfBookOwnership, opt => opt.MapFrom(src => (TypeOfBookOwnership)src.typeOfBookOwnership))
-           ;
+            ;
 
             CreateMap<Book, BookDto>()
             .ForMember(dest => dest.IsEditable, opt => opt.MapFrom(src => user != null && (src.CreatedById == user.Id || user.IsInRole("Moderator"))))
             //.ForMember(dest => dest.typeOfBookOwnership, opt => opt.MapFrom(src => (int)src.typeOfBookOwnership))
             .ForMember(dest => dest.AuthorsIds, opt => opt.MapFrom(src => src.Authors.Select(a => a.Id)))
-            .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category != null ? src.Category.Id : (int?)null));
-
+            .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category != null ? src.Category.Id : (int?)null))
+           ;
             CreateMap<BookDto, EditBookCommand>();
 
             CreateMap<BookOfferDto, BookOffer>();

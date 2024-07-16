@@ -12,7 +12,12 @@
 <div class="row">
     @foreach (var item in Model)
     {
+
         <div class="card m-3" style="width: 18rem;">
+            @if (!string.IsNullOrEmpty(item.ImagePath))
+            {
+                <img class="card-img-top" src="@item.ImagePath" alt="Book image" />
+            }
             <div class="card-body">
                 <h5 class="card-title">@item.Title</h5>
                 <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>

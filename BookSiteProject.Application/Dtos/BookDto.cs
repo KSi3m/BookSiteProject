@@ -1,4 +1,5 @@
 ﻿using BookSiteProject.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,5 +31,6 @@ namespace BookSiteProject.Application.Dtos
         public string? EncodedName { get;  set; }
 
         public bool IsEditable {  get; set; }
+        public string? ImagePath { get; set; }
     }
 }

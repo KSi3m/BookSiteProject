@@ -45,6 +45,7 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
             RuleFor(x => x.CategoryId)
                 .NotEmpty()
                 .WithMessage("Category field cannot be empty");
+
         }
     }
 }

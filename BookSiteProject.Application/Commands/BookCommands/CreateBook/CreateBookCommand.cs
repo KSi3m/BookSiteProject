@@ -1,5 +1,6 @@
 ﻿using BookSiteProject.Application.Dtos;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 {
     public class CreateBookCommand : BookDto, IRequest
     {
+       public IFormFile BookImage { get; set; }
     }
 }

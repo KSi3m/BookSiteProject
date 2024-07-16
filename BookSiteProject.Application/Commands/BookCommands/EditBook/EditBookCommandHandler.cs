@@ -6,6 +6,7 @@ using BookSiteProject.Application.Queries.GetBookByEncodedName;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +19,23 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
     {
 
         private readonly IBookRepository _bookRepository;
-        private readonly IMapper _mapper;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly IUserContext _userContext;
         private readonly IAuthorRepository _authorRepository;
+        private readonly IUserContext _userContext;
+        private readonly IWebHostEnvironment _webHostEnvironment; 
 
-        public EditBookCommandHandler(IBookRepository bookRepository, IMapper mapper, IAuthorRepository authorRepository,
-                                 ICategoryRepository categoryRepository, IUserContext userContext)
+        public EditBookCommandHandler(
+            IBookRepository bookRepository,
+            IAuthorRepository authorRepository,
+            ICategoryRepository categoryRepository,
+            IUserContext userContext,
+            IWebHostEnvironment webHostEnvironment) 
         {
             _bookRepository = bookRepository;
-            _mapper = mapper;
             _authorRepository = authorRepository;
             _categoryRepository = categoryRepository;
             _userContext = userContext;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<Unit> Handle(EditBookCommand request, CancellationToken cancellationToken)
@@ -52,7 +57,20 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
             //book.typeOfBookOwnership = (TypeOfBookOwnership)request.typeOfBookOwnership;
             book.Category = await _categoryRepository.GetCategoryById(request.CategoryId);
             book.Authors = (List<Author>)await _authorRepository.GetAuthorsById(request.AuthorsIds);
-           // book.EncodeName();
+            // book.EncodeName();
+            if (request.BookImage != null)
+            {
+                var fileName = Path.GetFileName(request.BookImage.FileName);
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await request.BookImage.CopyToAsync(stream);
+                }
+
+                book.ImagePath = "/images/" + fileName;
+            }
+            
 
             await _bookRepository.Commit();
             return Unit.Value;
@@ -60,11 +78,11 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
 
 
         
-        public async Task<BookDto> Handle(GetBookByEncodedNameQuery request, CancellationToken cancellationToken)
+        /*public async Task<BookDto> Handle(GetBookByEncodedNameQuery request, CancellationToken cancellationToken)
         {
             var book = await _bookRepository.GetBookByEncodedName(request.EncodedName);
             var bookDto = _mapper.Map<BookDto>(book);
             return bookDto;
-        }
+        }*/
     }
 }

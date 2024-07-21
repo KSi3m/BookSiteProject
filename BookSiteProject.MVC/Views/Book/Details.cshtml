@@ -1,0 +1,106 @@
+﻿@model BookSiteProject.Application.Dtos.BookDto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Model.Title Details</h1>
+
+<div>
+    <h4>BookDto</h4>
+    <hr />
+    <dl class="row">
+        @if (!string.IsNullOrEmpty(Model.ImagePath))
+        {
+            <dt class="col-sm-2">Image</dt>
+            <dd class="col-sm-10">
+                <img src="@Model.ImagePath" alt="Book image" class="img-fluid" />
+            </dd>
+        }
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfPublication)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YearOfPublication)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Publisher)
+        </dd>
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>*@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+       @* <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.typeOfBookOwnership)
+        </dt> 
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.typeOfBookOwnership)
+        </dd>*@
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorsIds)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var authorId in Model.AuthorsIds)
+            {
+                <span>@authorId</span>
+
+                <br />
+            }
+        </dd>
+
+        @* <td>
+            @foreach (var authorId in @model.AuthorsIds)
+            {
+                /**/
+                <span>@authorId</span>
+            <dd class="col-sm-10">
+                    
+            </dd>
+
+                <br />
+            }
+
+        </td> *@
+    </dl>
+</div>
+<div>
+    @if(Model.IsEditable)
+    {
+        <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edit</a>
+    }
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<p>Offers:</p>
+<div id="offers" class="row" data-encoded-name="@Model.EncodedName"></div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/js/Book/Details.js"> </script>
+}

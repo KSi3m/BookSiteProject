@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BookSiteProject.Application.Dtos.BookDto>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="card m-3" style="width: 18rem;">
+            @if (!string.IsNullOrEmpty(item.ImagePath))
+            {
+                <img class="card-img-top" src="@item.ImagePath" alt="Book image" />
+            }
+            <div class="card-body">
+                <h5 class="card-title">@item.Title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                <p class="card-text">@item.Description</p>
+                <a class="btn btn-primary" asp-controller="Book" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
+                @if(item.IsEditable)
+                {
+                    <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
+                }
+                
+                 
+               
+            </div>
+        </div>
+    }
+</div>
+

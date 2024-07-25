@@ -13,16 +13,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\1605025926969.jpg",
+      "PackagePath": "staticwebassets\\images\\1605025926969.jpg"
+    },
+    {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\44fdos1xwse01.jpg",
       "PackagePath": "staticwebassets\\images\\44fdos1xwse01.jpg"
     },
     {
-      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\asdsdd2123.PNG",
-      "PackagePath": "staticwebassets\\images\\asdsdd2123.PNG"
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg",
+      "PackagePath": "staticwebassets\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg"
     },
     {
-      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\xd.jpg",
-      "PackagePath": "staticwebassets\\images\\xd.jpg"
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\asdsdd2123.PNG",
+      "PackagePath": "staticwebassets\\images\\asdsdd2123.PNG"
     },
     {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Book\\Details.js",

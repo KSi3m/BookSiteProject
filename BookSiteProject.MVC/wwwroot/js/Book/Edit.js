@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-   
+
 
     LoadBookOffers();
 
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
             success: function (data) {
                 toastr["success"]("Created new book offer");
-                LoadBookOffers(); 
+                LoadBookOffers();
                 $("#createBookOffer").modal('hide');
                 $("#createBookOffer form")[0].reset();
             },

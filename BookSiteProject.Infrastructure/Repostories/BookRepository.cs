@@ -62,7 +62,10 @@ namespace BookSiteProject.Infrastructure.Repostories
                 .FirstOrDefaultAsync(x => x.ISBN != null && x.ISBN.ToLower() == ISBN.ToLower());
         }
 
-
-
+        public async Task Remove(Book book)
+        {
+             _dbcontext.Books.Remove(book);
+            await _dbcontext.SaveChangesAsync();
+        }
     }
 }

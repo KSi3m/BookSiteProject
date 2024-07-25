@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DyqAcQq3NS6O5nxgoczO6F3fQY0r3KnJ0/9t3+aCH6Y=",
+  "Hash": "ibn6nTNBJfP+jmep7cSZDC6h+M36d6R+KAvFW3FCF8I=",
   "Source": "BookSiteProject.MVC",
   "BasePath": "_content/BookSiteProject.MVC",
   "Mode": "Default",
@@ -1233,6 +1233,25 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\1605025926969.jpg",
+      "SourceId": "BookSiteProject.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\",
+      "BasePath": "_content/BookSiteProject.MVC",
+      "RelativePath": "images/1605025926969.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\1605025926969.jpg"
+    },
+    {
       "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\44fdos1xwse01.jpg",
       "SourceId": "BookSiteProject.MVC",
       "SourceType": "Discovered",
@@ -1252,6 +1271,25 @@
       "OriginalItemSpec": "wwwroot\\images\\44fdos1xwse01.jpg"
     },
     {
+      "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg",
+      "SourceId": "BookSiteProject.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\",
+      "BasePath": "_content/BookSiteProject.MVC",
+      "RelativePath": "images/8b9988568d72fc8b59df48a2553ca97e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg"
+    },
+    {
       "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\asdsdd2123.PNG",
       "SourceId": "BookSiteProject.MVC",
       "SourceType": "Discovered",
@@ -1269,25 +1307,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\asdsdd2123.PNG"
-    },
-    {
-      "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\xd.jpg",
-      "SourceId": "BookSiteProject.MVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\",
-      "BasePath": "_content/BookSiteProject.MVC",
-      "RelativePath": "images/xd.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\xd.jpg"
     },
     {
       "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Book\\Details.js",

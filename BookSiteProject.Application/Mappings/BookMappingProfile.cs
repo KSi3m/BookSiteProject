@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.ApplicationUser;
 using BookSiteProject.Application.Commands.BookCommands.CreateBook;
+using BookSiteProject.Application.Commands.BookCommands.DeleteBook;
 using BookSiteProject.Application.Dtos;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
@@ -37,6 +38,7 @@ namespace BookSiteProject.Application.Mappings
             .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category != null ? src.Category.Id : (int?)null))
            ;
             CreateMap<BookDto, EditBookCommand>();
+            CreateMap<BookDto, DeleteBookCommand>();
 
             CreateMap<BookOfferDto, BookOffer>();
                 //.ReverseMap();

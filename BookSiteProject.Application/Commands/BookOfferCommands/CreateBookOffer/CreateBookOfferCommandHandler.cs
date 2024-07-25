@@ -32,7 +32,10 @@ namespace BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer
             var book = await _bookRepository.GetBookByEncodedName(request.BookEncodedName);
 
             var user = _userContext.GetCurrentUser();
-            if (user == null && (book.CreatedById != user.Id || user.IsInRole("Moderator")))
+            //if (user == null && (book.CreatedById != user.Id || user.IsInRole("Moderator")))
+            //bool isEditable = user != null && book.CreatedById == user.Id;
+            bool isEditable = user != null ;
+            if (!isEditable)
             {
                 return Unit.Value;
             }

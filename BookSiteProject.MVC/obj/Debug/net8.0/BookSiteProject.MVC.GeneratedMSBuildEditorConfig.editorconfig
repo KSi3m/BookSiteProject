@@ -74,6 +74,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/C\#/book/BookSiteProject/BookSiteProject.MVC/Views/Book/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/C\#/book/BookSiteProject/BookSiteProject.MVC/Views/Book/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<BookSiteProject.Application.Dtos.BookDto>
+@using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer
 
 @{
     ViewData["Title"] = "Books";
@@ -27,11 +28,21 @@
                 {
                     <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
                 }
-                
-                 
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-encodedName="@item.EncodedName">Delete</a>
+                }
+                @*<partial name="_CreateBookOffer" model="new CreateBookOfferCommand() {BookEncodedName = @item.EncodedName} " />*@
+                @* @await Html.PartialAsync("_CreateBookOffer", new CreateBookOfferCommand() { BookEncodedName = item.EncodedName })*@
                
             </div>
         </div>
     }
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+}

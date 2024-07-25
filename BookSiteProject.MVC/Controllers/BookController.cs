@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.Commands.BookCommands.CreateBook;
+using BookSiteProject.Application.Commands.BookCommands.DeleteBook;
 using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer;
 using BookSiteProject.Application.Dtos;
 using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOffersOfBook;
@@ -133,7 +134,8 @@ namespace BookSiteProject.MVC.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Owner,Admin,Moderator")]
+        //[Authorize(Roles = "Owner,Admin,Moderator")]
+       // [Authorize]
         [Route("Book/BookOffer")]
         public async Task<IActionResult> CreateBookOffer(CreateBookOfferCommand command)
         {
@@ -156,6 +158,32 @@ namespace BookSiteProject.MVC.Controllers
         {
             var data = await _mediator.Send(new GetBookOffersOfBookQuery() { EncodedName = encodedName });
             return Ok(data);
+        }
+        [Route("Book/{encodedName}/Delete")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(string encodedName)
+        {
+            var dto = await _mediator.Send(new GetBookByEncodedNameQuery(encodedName));
+            var model = _mapper.Map<DeleteBookCommand>(dto);
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [Route("Book/{encodedName}/Delete")]
+        public async Task<IActionResult> Delete(DeleteBookCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                this.SetNotifications(NotificationType.error, "Failed to remove book!");
+                return BadRequest(ModelState);
+            }
+        
+            await _mediator.Send(command);
+
+
+            //this.SetNotifications(NotificationType.success, "Book offer added!");
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -1,0 +1,64 @@
+﻿@model BookSiteProject.Application.Commands.BookOfferCommands.EditBookOffer.EditBookOfferCommand
+
+<div class="modal fade" id="editBookOffer" tabindex="-1" role="dialog" aria-labelledby="editBookOfferLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="EditBookOffer">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBookOfferLabel">Edit Book Offer</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input asp-for="Id" id="bookOfferId" class="form-control"  type="hidden" />
+
+                    @* <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <input asp-for="Type" class="form-control" />
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>*@
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Type">Type:</label>
+                        <select asp-for="Type" id="Type" name="Type" class="form-control">
+                            <option value="0">Sale</option>
+                            <option value="1">Rental</option>
+
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                        <select asp-for="Status" id="Status" name="Status" class="form-control">
+                            <option value="0">Unavailable</option>
+                            <option value="1">Available</option>
+
+                        </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" type="number" step="any" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -26,7 +26,7 @@
                 <a class="btn btn-primary" asp-controller="Book" asp-action="Details" asp-route-encodedName="@item.EncodedName">Details</a>
                 @if(item.IsEditable)
                 {
-                    <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
+                    <a class="btn btn-info" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
                 }
                 @if (User.IsInRole("Admin"))
                 {

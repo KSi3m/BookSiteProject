@@ -19,6 +19,11 @@ namespace BookSiteProject.Infrastructure.Repostories
             this._dbcontext = dbcontext;
         }
 
+        public async Task Commit()
+        {
+            await _dbcontext.SaveChangesAsync();
+        }
+
         public async Task Create(BookOffer bookOffer)
         {
             _dbcontext.Add(bookOffer);
@@ -31,5 +36,17 @@ namespace BookSiteProject.Infrastructure.Repostories
                 .Where(x => x.Book.EncodedName == bookEncodedName)
                 .ToListAsync();
         }
+
+        public async Task<BookOffer> GetBookOfferById(int offerId)
+        {
+            return await _dbcontext.BookOffers.Where(x => x.Id == offerId).FirstOrDefaultAsync();
+        }
+
+        public async Task Remove(BookOffer bookOffer)
+        {
+            _dbcontext.BookOffers.Remove(bookOffer);
+            await _dbcontext.SaveChangesAsync();
+        }
+
     }
 }

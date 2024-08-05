@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.BookCommands.DeleteBook
+namespace BookSiteProject.Application.Commands.BookOfferCommands.DeleteBookOffer
 {
-    public class DeleteBookCommand: IRequest
+    public class DeleteBookOfferCommand: BookOfferDto, IRequest
     {
-        public string EncodedName { get; set; }
+        public int OfferId { get; set; }
     }
 }

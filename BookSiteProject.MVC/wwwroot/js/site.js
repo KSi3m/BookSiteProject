@@ -7,10 +7,10 @@
     };
 
     const OfferStatus = {
-        0: 'Available',
-        1: 'Unavailable'
+        0: 'Unavailable',
+        1: 'Available'
     };
-
+  
     for (const offer of offers) {
         const date = new Date(offer.dateOfCreation);
         const formattedDate = `${date.toLocaleDateString('en-US', {
@@ -22,6 +22,16 @@
             minute: '2-digit',
             second: '2-digit'
         })}`;
+
+        if (typeof isAdmin === 'undefined') {
+            isAdmin = false;
+        }
+
+        const adminButtons = isAdmin ? `
+        <a class="btn btn-danger delete-book-offer" data-offer-id="${offer.id}">Delete</a>
+        <a class="btn btn-info edit-book-offer" data-offer-id="${offer.id}" data-bs-toggle="modal" data-bs-target="#editBookOffer">Edit</a>
+    ` : '';
+
         container.append(`
                 <div class="card border-secondary mb-3">
                     <div class="card-header">Type of offer: ${OfferType[offer.type]}</div>
@@ -30,6 +40,8 @@
                         <h5 class="card-title">Price: ${offer.price}</h5> 
                         <h5 class="card-title">Offer Status: ${OfferStatus[offer.status]}</h5> 
                     </div>
+                    ${adminButtons}
+                 
                 </div>
             `);
     }
@@ -43,7 +55,7 @@ const LoadBookOffers = () => {
 
     $.ajax({
         url: `/Book/${bookEncodedName}/BookOffer`,
-        type: 'get',
+        type: 'GET',
         success: function (data) {
             console.log("Data received:", data);
 

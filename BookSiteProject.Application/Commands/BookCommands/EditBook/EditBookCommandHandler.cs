@@ -43,7 +43,7 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
             var book = await _bookRepository.GetBookByEncodedName(request.EncodedName);
 
             var user = _userContext.GetCurrentUser();
-            bool isEditable = user != null && (book.CreatedById == user.Id || user.IsInRole("Moderator"));
+            bool isEditable = user != null && (book.CreatedById == user.Id || user.IsInRole("Moderator") || user.IsInRole("Admin"));
             if (!isEditable)
             {
                 return Unit.Value;

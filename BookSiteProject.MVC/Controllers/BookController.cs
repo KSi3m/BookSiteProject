@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.Commands.BookCommands.CreateBook;
 using BookSiteProject.Application.Commands.BookCommands.DeleteBook;
+using BookSiteProject.Application.Commands.BookCommands.EditBook;
 using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer;
+using BookSiteProject.Application.Commands.BookOfferCommands.DeleteBookOffer;
+using BookSiteProject.Application.Commands.BookOfferCommands.EditBookOffer;
 using BookSiteProject.Application.Dtos;
+using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOfferById;
 using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOffersOfBook;
 using BookSiteProject.Application.Queries.CategoryQueries.GetAllCategories;
 using BookSiteProject.Application.Queries.GetAllAuthors;
@@ -17,6 +21,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BookSiteProject.MVC.Controllers
@@ -164,8 +169,7 @@ namespace BookSiteProject.MVC.Controllers
         public async Task<IActionResult> Delete(string encodedName)
         {
             var dto = await _mediator.Send(new GetBookByEncodedNameQuery(encodedName));
-            var model = _mapper.Map<DeleteBookCommand>(dto);
-            return View(model);
+            return View(dto);
         }
 
         [HttpPost]
@@ -182,8 +186,40 @@ namespace BookSiteProject.MVC.Controllers
             await _mediator.Send(command);
 
 
-            //this.SetNotifications(NotificationType.success, "Book offer added!");
+            this.SetNotifications(NotificationType.success, "Book offer removed!");
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin")]
+        [Route("/BookOffer/{offerId}")]
+        public async Task<IActionResult> DeleteBookOffer(int offerId)
+        {
+            await _mediator.Send(new DeleteBookOfferCommand { OfferId = offerId});
+            return NoContent();
+
+        }
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("/BookOffer/{offerId}")]
+        public async Task<IActionResult> GetBookOffer(int offerId)
+        {
+            var offer = await _mediator.Send(new GetBookOfferByIdQuery { OfferId = offerId });
+            var model = _mapper.Map<EditBookOfferCommand>(offer);
+            return Ok(model);
+
+        }
+        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [Route("/BookOffer/{offerId}")]
+        public async Task<IActionResult> EditBookOffer(EditBookOfferCommand command)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }

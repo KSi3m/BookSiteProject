@@ -1,8 +1,8 @@
-﻿@model BookSiteProject.Application.Commands.BookCommands.DeleteBook.DeleteBookCommand
+﻿@model BookSiteProject.Application.Dtos.BookDto
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>DeleteBookCommand</h4>
+    <h4>BookDto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -35,16 +35,34 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ISBN)
         </dd>
-
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EncodedName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EncodedName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsEditable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsEditable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
     </dl>
     
-    <form asp-action="Delete" method="post">
+    <form asp-action="Delete">
         @Html.HiddenFor(model => model.EncodedName)
-        @Html.HiddenFor(model => model.Title)
-        @Html.HiddenFor(model => model.Description)
-        @Html.HiddenFor(model => model.YearOfPublication)
-        @Html.HiddenFor(model => model.Publisher)
-        @Html.HiddenFor(model => model.ISBN)
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

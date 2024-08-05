@@ -1,10 +1,14 @@
 ﻿@using BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer
-@model BookSiteProject.Application.Commands.BookCommands.CreateBook.EditBookCommand
+@using BookSiteProject.Application.Commands.BookOfferCommands.EditBookOffer
+@model BookSiteProject.Application.Commands.BookCommands.EditBook.EditBookCommand
 
 @{
     ViewData["Title"] = "Edit";
 }
-
+<script>
+    
+    var isAdmin = @User.IsInRole("Admin").ToString().ToLower(); 
+</script>
 <h1>Edit</h1>
 
 <h4>EditBookCommand</h4>
@@ -89,6 +93,7 @@
 
 <div>
     <partial name="_CreateBookOffer" model="new CreateBookOfferCommand() {BookEncodedName = Model.EncodedName} " />
+    <partial name="_EditBookOffer" model="new EditBookOfferCommand() {}" />
     <a asp-action="Index">Back to List</a>
 </div>
 <p>Offers:</p>
@@ -97,5 +102,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
     <script src="~/js/Book/Edit.js"> </script>
+   
+    <script src="~/js/Book/Delete.js"> </script>
 }

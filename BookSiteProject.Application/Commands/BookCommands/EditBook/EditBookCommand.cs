@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
+namespace BookSiteProject.Application.Commands.BookCommands.EditBook
 {
     public class EditBookCommand: BookDto,IRequest
     {

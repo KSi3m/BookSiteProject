@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using BookSiteProject.Application.ApplicationUser;
-using BookSiteProject.Application.Commands.BookCommands.CreateBook;
+
 using BookSiteProject.Application.Commands.BookCommands.DeleteBook;
+using BookSiteProject.Application.Commands.BookCommands.EditBook;
+using BookSiteProject.Application.Commands.BookOfferCommands.EditBookOffer;
 using BookSiteProject.Application.Dtos;
 using BookSiteProject.Domain.Entities;
 using BookSiteProject.Domain.Interfaces;
@@ -32,13 +34,14 @@ namespace BookSiteProject.Application.Mappings
             ;
 
             CreateMap<Book, BookDto>()
-            .ForMember(dest => dest.IsEditable, opt => opt.MapFrom(src => user != null && (src.CreatedById == user.Id || user.IsInRole("Moderator"))))
+            .ForMember(dest => dest.IsEditable, opt => opt.MapFrom(src => user != null && (src.CreatedById == user.Id || user.IsInRole("Moderator") || user.IsInRole("Admin"))))
             //.ForMember(dest => dest.typeOfBookOwnership, opt => opt.MapFrom(src => (int)src.typeOfBookOwnership))
             .ForMember(dest => dest.AuthorsIds, opt => opt.MapFrom(src => src.Authors.Select(a => a.Id)))
             .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Category != null ? src.Category.Id : (int?)null))
            ;
             CreateMap<BookDto, EditBookCommand>();
             CreateMap<BookDto, DeleteBookCommand>();
+            CreateMap<BookOfferDto, EditBookOfferCommand>();
 
             CreateMap<BookOfferDto, BookOffer>();
                 //.ReverseMap();

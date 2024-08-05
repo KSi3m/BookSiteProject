@@ -60,7 +60,7 @@
 
             <div class="form-group mb-3">
                 <label asp-for="CategoryId">Category:</label>
-                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.Categories">
                     <option value="">Select a category</option>
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
@@ -68,7 +68,7 @@
 
              <div class="form-group mb-3">
                  <label asp-for="AuthorsIds">Authors:</label>
-                 <select asp-for="AuthorsIds" class="form-control" asp-items="ViewBag.Authors" multiple>
+                 <select asp-for="AuthorsIds" class="form-select" asp-items="ViewBag.Authors" multiple>
                  </select>
                 <span asp-validation-for="AuthorsIds" class="text-danger"></span>
              </div>

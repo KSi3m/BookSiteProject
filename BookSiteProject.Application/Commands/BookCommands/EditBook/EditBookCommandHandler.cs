@@ -61,14 +61,26 @@ namespace BookSiteProject.Application.Commands.BookCommands.EditBook
             // book.EncodeName();
             if (request.BookImage != null)
             {
-                var fileName = Path.GetFileName(request.BookImage.FileName);
+                //adding new file to /images
+                var fileExtension = Path.GetExtension(request.BookImage.FileName);
+                var fileName = Guid.NewGuid().ToString() + fileExtension;
                 var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await request.BookImage.CopyToAsync(stream);
                 }
-
+                //deleting old file
+                var imagePath = book.ImagePath;
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, imagePath.TrimStart('/'));
+                    if (File.Exists(oldFilePath))
+                    {
+                        File.Delete(oldFilePath);
+                    }
+                }
+                //setting new file for book
                 book.ImagePath = "/images/" + fileName;
             }
             

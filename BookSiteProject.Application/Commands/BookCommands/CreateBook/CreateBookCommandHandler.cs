@@ -53,7 +53,8 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
 
             if (request.BookImage != null)
             {
-                var fileName = Path.GetFileName(request.BookImage.FileName);
+                var fileExtension = Path.GetExtension(request.BookImage.FileName);
+                var fileName = Guid.NewGuid().ToString()+fileExtension;
                 var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", fileName);
 
                 using (var stream = new FileStream(filePath, FileMode.Create))

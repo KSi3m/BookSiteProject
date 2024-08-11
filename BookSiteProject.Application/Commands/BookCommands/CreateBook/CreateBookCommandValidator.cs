@@ -29,7 +29,7 @@ namespace BookSiteProject.Application.Commands.BookCommands.CreateBook
             .WithMessage("ISBN must be 10 or 13 digits long")
             .Custom((value, context) =>
             {
-                var bookFromDb = bookRepository.GetByISBN(value).Result;
+                var bookFromDb =  bookRepository.GetByISBN(value).Result;
                 if (bookFromDb != null)
                 {
                     context.AddFailure("ISBN unique number already exist!");

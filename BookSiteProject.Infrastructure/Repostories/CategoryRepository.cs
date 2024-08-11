@@ -19,8 +19,15 @@ namespace BookSiteProject.Infrastructure.Repostories
         {
             this._dbcontext = dbcontext;
         }
+
+        public async Task Commit()
+        {
+            await _dbcontext.SaveChangesAsync();
+        }
+
         public async Task Create(Category category)
         {
+            category.Active = true;
             _dbcontext.Add(category);
             await _dbcontext.SaveChangesAsync();
         }
@@ -28,6 +35,11 @@ namespace BookSiteProject.Infrastructure.Repostories
         public async Task<IEnumerable<Category>> GetAll()
         {
             return await _dbcontext.Categories.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Category>> GetAllListed()
+        {
+            return await _dbcontext.Categories.Where(x=>x.Active == true).ToListAsync();
         }
 
         public async Task<Category> GetCategoryById(int? categoryId)
@@ -38,18 +50,24 @@ namespace BookSiteProject.Infrastructure.Repostories
         public async Task<Category> GetCategoryByName(string name)
         {
             var test = await _dbcontext.Categories
-                .FirstOrDefaultAsync(x => x.Name != null && x.Name.ToLower() == name.ToLower());
+                .FirstOrDefaultAsync(x => (x.Name != null) && (x.Name.ToLower() == name.ToLower()));
             return test;
-        } 
-        /*public Category? GetCategoryByName(string name)
+        }
+
+        public async Task Remove(Category category)
         {
-            if (name == null)
-            {
-                return null;
-            }
-            var test =  _dbcontext.Categories
-                .FirstOrDefault(x => x.Name != null && x.Name.ToLower() == name.ToLower());
-            return test;
-        }*/
+            _dbcontext.Categories.Remove(category);
+            await _dbcontext.SaveChangesAsync();
+        }
+        /*public Category? GetCategoryByName(string name)
+{
+   if (name == null)
+   {
+       return null;
+   }
+   var test =  _dbcontext.Categories
+       .FirstOrDefault(x => x.Name != null && x.Name.ToLower() == name.ToLower());
+   return test;
+}*/
     }
 }

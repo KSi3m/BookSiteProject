@@ -1,35 +1,35 @@
 ﻿@model IEnumerable<BookSiteProject.Application.Dtos.CategoryDto>
+@using BookSiteProject.Application.Commands.CategoryCommands.DeleteCategory
+@using BookSiteProject.Application.Commands.CategoryCommands.CreateCategory
+@using BookSiteProject.Application.Commands.CategoryCommands.ChangeStatusOfCategory
+@using BookSiteProject.Application.Commands.CategoryCommands.EditCategory
 
 @{
     ViewData["Title"] = "Categories";
-}
 
+}
+<script>
+
+    var isAdmin = @User.IsInRole("Admin").ToString().ToLower();
+</script>
 <h1>Categories</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Name }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Name }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+        <partial name="_CreateCategory" model="new CreateCategoryCommand() {}" />
+        <partial name="_ConfirmDeleteCategory" model="new DeleteCategoryCommand() {}" />
+        <partial name="_ConfirmStatusChange" model="new ChangeStatusOfCategoryCommand() {}" />
+        <partial name="_EditCategory" model="new EditCategoryCommand() {}" />
+        <div id="categories">
+
+
+        </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/Category/Delete.js"> </script>
+    <script src="~/js/Category/Create.js"> </script>
+    <script src="~/js/Category/ChangeStatus.js"> </script>
+    <script src="~/js/Category/Edit.js"> </script>
 }
-    </tbody>
-</table>

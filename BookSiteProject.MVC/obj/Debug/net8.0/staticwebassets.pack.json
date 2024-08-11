@@ -21,10 +21,6 @@
       "PackagePath": "staticwebassets\\images\\44fdos1xwse01.jpg"
     },
     {
-      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg",
-      "PackagePath": "staticwebassets\\images\\8b9988568d72fc8b59df48a2553ca97e.jpg"
-    },
-    {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\asdsdd2123.PNG",
       "PackagePath": "staticwebassets\\images\\asdsdd2123.PNG"
     },
@@ -35,6 +31,22 @@
     {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Book\\Edit.js",
       "PackagePath": "staticwebassets\\js\\Book\\Edit.js"
+    },
+    {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Category\\ChangeStatus.js",
+      "PackagePath": "staticwebassets\\js\\Category\\ChangeStatus.js"
+    },
+    {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Category\\Create.js",
+      "PackagePath": "staticwebassets\\js\\Category\\Create.js"
+    },
+    {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Category\\Delete.js",
+      "PackagePath": "staticwebassets\\js\\Category\\Delete.js"
+    },
+    {
+      "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\Category\\Edit.js",
+      "PackagePath": "staticwebassets\\js\\Category\\Edit.js"
     },
     {
       "Id": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\js\\site.js",

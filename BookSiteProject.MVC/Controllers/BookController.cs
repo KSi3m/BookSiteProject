@@ -9,6 +9,7 @@ using BookSiteProject.Application.Dtos;
 using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOfferById;
 using BookSiteProject.Application.Queries.BookOfferQueries.GetBookOffersOfBook;
 using BookSiteProject.Application.Queries.CategoryQueries.GetAllCategories;
+using BookSiteProject.Application.Queries.CategoryQueries.GetAllListedCategories;
 using BookSiteProject.Application.Queries.GetAllAuthors;
 using BookSiteProject.Application.Queries.GetAllBooks;
 using BookSiteProject.Application.Queries.GetBookByEncodedName;
@@ -60,7 +61,7 @@ namespace BookSiteProject.MVC.Controllers
             }).ToList();
             ViewBag.Authors = authorList;
 
-            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            var categories = await _mediator.Send(new GetAllListedCategoriesQuery());
             var categoryItems = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(), 
@@ -93,7 +94,7 @@ namespace BookSiteProject.MVC.Controllers
             return View(dto);
         }
 
-
+        [HttpGet]
         [Route("Book/{encodedName}/Edit")]
         [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Edit(string encodedName)
@@ -112,7 +113,7 @@ namespace BookSiteProject.MVC.Controllers
             }).ToList();
             ViewBag.Authors = authorList;
 
-            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            var categories = await _mediator.Send(new GetAllListedCategoriesQuery());
             var categoryItems = categories.Select(c => new SelectListItem
             {
                 Value = c.Id.ToString(),

@@ -51,13 +51,10 @@ const LoadBookOffers = () => {
     const container = $("#offers");
     const bookEncodedName = container.data("encodedName");
 
-    console.log("Book Encoded Name:", bookEncodedName);
-
     $.ajax({
         url: `/Book/${bookEncodedName}/BookOffer`,
         type: 'GET',
         success: function (data) {
-            console.log("Data received:", data);
 
             if (!data.length) {
                 container.html("No book offers as of yet");
@@ -69,4 +66,96 @@ const LoadBookOffers = () => {
             toastr["error"]("Something went wrong");
         }
     });
+};
+
+const LoadCategories = () => {
+    const container = $("#categories");
+   
+    $.ajax({
+        url: `/api/Categories`,
+        type: 'GET',
+        success: function (data) {
+       
+
+            if (!data.length) {
+                container.html("No categories");
+            } else {
+                RenderCategories(data, container);
+            }
+        },
+        error: function () {
+            toastr["error"]("Something went wrong");
+        }
+    });
+};
+
+const RenderCategories = (categories, container) => {
+    container.empty();
+
+   
+
+    for (const item of categories) {
+
+
+        var styling;
+        var listField;
+        var status;
+
+        if (item.active == true) {
+            styling = "bg-success text-white";
+            listField = "Unlist";
+            status = false;
+        }
+        else {
+            styling = "bg-secondary text-white";
+            listField = "ListBack";
+            status = true;
+        }
+
+        
+
+        if (typeof isAdmin === 'undefined') {
+            isAdmin = false;
+        }
+
+        const adminButtons = isAdmin ? `<td class="text-end align-middle">
+                        <form id="editForm" style="display:inline;">
+                            <input type="hidden" name="CategoryName" value="${item.name}" />
+                            <button type="button" class="btn btn-danger btn-sm edit-category" data-old-name="${item.name}">Edit</button>
+                        </form>
+
+
+                        <form id="deleteForm" style="display:inline;">
+                            <input type="hidden" name="CategoryName" value="${item.name}" />
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeleteModal('${item.name}');">Delete</button>
+                        </form>
+                        
+
+                          <form id="changeStatusForm" style="display:inline;">
+                            <input type="hidden"  name="CategoryName" value="${item.name}" />
+                            <input type="hidden"  name="Status" value=${status.toString().toLowerCase()} />
+                            <button type="button"  class="btn btn-warning btn-sm" onclick="confirmChangeStatusModal('${item.name}','${listField}','${status.toString().toLowerCase()}');">${listField}</button>
+                          </form>
+                          
+                    
+                </td>
+    ` : '';
+
+        container.append(`
+               
+             <div class="card mb-3">
+               <div class="card-body ${styling}">
+                <table class="table">
+                    <tr>
+                        <td>
+                              ${item.name}
+                        </td>
+                            ${adminButtons}
+                    </tr>
+                </table>
+              </div >
+             </div >
+      
+            `);
+    }
 };

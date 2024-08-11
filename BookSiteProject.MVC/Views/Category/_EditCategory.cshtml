@@ -1,0 +1,40 @@
+﻿@model BookSiteProject.Application.Commands.CategoryCommands.EditCategory.EditCategoryCommand
+
+
+
+<div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="editCategoryLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editCategoryLabel">Edit Category</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input asp-for="OldName" name="OldName" class="form-control" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="NewName" class="control-label" >Name</label>
+                        <input asp-for="NewName" class="form-control" type="text"   />
+                        <span asp-validation-for="NewName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" value="Edit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

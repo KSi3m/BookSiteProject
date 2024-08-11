@@ -12,5 +12,6 @@ namespace BookSiteProject.Domain.Entities
         public string Firstname { get; set; } = default!;
         public string? Surname { get; set; }
         public List<Book> Books { get; set; } = [];
+        public bool Active { get; set; } = true;
     }
 }

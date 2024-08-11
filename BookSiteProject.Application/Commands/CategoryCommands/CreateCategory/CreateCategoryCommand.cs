@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.CreateCategory
+namespace BookSiteProject.Application.Commands.CategoryCommands.CreateCategory
 {
-    public class CreateCategoryCommand: CategoryDto, IRequest
+    public class CreateCategoryCommand : CategoryDto, IRequest
     {
     }
 }

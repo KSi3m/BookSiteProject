@@ -11,5 +11,6 @@ namespace BookSiteProject.Application.Dtos
     {
         public string Name { get; set; } = default!;
         public IEnumerable<int>? BooksIds { get; set; }
+        public bool Active { get; set; }
     }
 }

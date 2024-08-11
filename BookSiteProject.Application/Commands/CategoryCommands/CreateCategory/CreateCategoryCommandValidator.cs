@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookSiteProject.Application.Commands.CreateCategory
+namespace BookSiteProject.Application.Commands.CategoryCommands.CreateCategory
 {
     public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
     {
@@ -26,10 +26,11 @@ namespace BookSiteProject.Application.Commands.CreateCategory
 
             .Custom((value, context) =>
             {
-                var categoryFromDb = categoryRepository.GetCategoryByName(value);
+                var categoryFromDb = categoryRepository.GetCategoryByName(value).Result;
+
                 if (categoryFromDb != null)
                 {
-                    Console.Out.WriteLine("Book exists");
+                  
                     context.AddFailure("Name", "Category with this name already exist!");
                 }
             });

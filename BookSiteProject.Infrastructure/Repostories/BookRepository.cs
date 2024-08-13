@@ -52,6 +52,11 @@ namespace BookSiteProject.Infrastructure.Repostories
                 .Include(b => b.Authors).FirstAsync(c=>c.EncodedName == encodedName);
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByCategory(Category category)
+        {
+            return await _dbcontext.Books.Where(x => x.Category == category).ToListAsync();
+        }
+
         public async Task<Book?> GetByISBN(string ISBN)
         {
             if (ISBN == null)

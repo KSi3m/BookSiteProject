@@ -17,5 +17,7 @@ namespace BookSiteProject.Domain.Interfaces
         Task Commit();
         Task<bool> CheckIfBooksEncodedNameAlreadyInDb(string encodeName);
         Task Remove(Book book);
+
+        Task<IEnumerable<Book>> GetBooksByCategory(Category category);
     }
 }

@@ -52,7 +52,7 @@ const LoadBookOffers = () => {
     const bookEncodedName = container.data("encodedName");
 
     $.ajax({
-        url: `/Book/${bookEncodedName}/BookOffer`,
+        url: `/api/books/${bookEncodedName}/bookoffers`,
         type: 'GET',
         success: function (data) {
 
@@ -72,7 +72,7 @@ const LoadCategories = () => {
     const container = $("#categories");
    
     $.ajax({
-        url: `/api/Categories`,
+        url: `/api/categories`,
         type: 'GET',
         success: function (data) {
        

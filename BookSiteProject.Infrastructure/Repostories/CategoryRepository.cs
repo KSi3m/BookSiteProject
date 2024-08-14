@@ -49,6 +49,10 @@ namespace BookSiteProject.Infrastructure.Repostories
 
         public async Task<Category> GetCategoryByName(string name)
         {
+            if(String.IsNullOrEmpty(name))
+            {
+                return null;
+            }
             var test = await _dbcontext.Categories
                 .FirstOrDefaultAsync(x => (x.Name != null) && (x.Name.ToLower() == name.ToLower()));
             return test;

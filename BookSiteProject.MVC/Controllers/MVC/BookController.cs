@@ -25,18 +25,18 @@ using Newtonsoft.Json;
 using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace BookSiteProject.MVC.Controllers
+namespace BookSiteProject.MVC.Controllers.MVC
 {
-    public class BookController: Controller
+    public class BookController : Controller
     {
-        
+
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
         public BookController(IMediator mediator, IMapper mapper)
         {
-            _mediator= mediator;
-            _mapper= mapper;
+            _mediator = mediator;
+            _mapper = mapper;
         }
 
 
@@ -51,21 +51,19 @@ namespace BookSiteProject.MVC.Controllers
         [Authorize(Roles = "Owner,Admin,Moderator")]
         public async Task<IActionResult> Create()
         {
-          
-
             var authors = await _mediator.Send(new GetAllAuthorsQuery());
-            var authorList = authors.Select(a => new SelectListItem 
-            { 
-                Value = a.Id.ToString(), 
-                Text = a.Firstname + " " + a.Surname 
+            var authorList = authors.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.Firstname + " " + a.Surname
             }).ToList();
             ViewBag.Authors = authorList;
 
             var categories = await _mediator.Send(new GetAllListedCategoriesQuery());
             var categoryItems = categories.Select(c => new SelectListItem
             {
-                Value = c.Id.ToString(), 
-                Text = c.Name 
+                Value = c.Id.ToString(),
+                Text = c.Name,
             }).ToList();
 
             ViewBag.Categories = categoryItems;
@@ -98,9 +96,9 @@ namespace BookSiteProject.MVC.Controllers
         [Route("Book/{encodedName}/Edit")]
         [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Edit(string encodedName)
-        { 
+        {
             var dto = await _mediator.Send(new GetBookByEncodedNameQuery(encodedName));
-            if(!dto.IsEditable)
+            if (!dto.IsEditable)
             {
                 return RedirectToAction("NoAccess", "Home");
             }
@@ -113,11 +111,12 @@ namespace BookSiteProject.MVC.Controllers
             }).ToList();
             ViewBag.Authors = authorList;
 
-            var categories = await _mediator.Send(new GetAllListedCategoriesQuery());
-            var categoryItems = categories.Select(c => new SelectListItem
+            var categories = await _mediator.Send(new GetAllCategoriesQuery());
+            var categoryItems = categories.Select(c => new
             {
                 Value = c.Id.ToString(),
-                Text = c.Name
+                Text = c.Name,
+                Activated = c.Active
             }).ToList();
 
             ViewBag.Categories = categoryItems;
@@ -139,32 +138,9 @@ namespace BookSiteProject.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpPost]
-        //[Authorize(Roles = "Owner,Admin,Moderator")]
-       // [Authorize]
-        [Route("Book/BookOffer")]
-        public async Task<IActionResult> CreateBookOffer(CreateBookOfferCommand command)
-        {
-            if (!ModelState.IsValid)
-            {
-                //this.SetNotifications(NotificationType.error, "Failed to add book offer!");
-                return BadRequest(ModelState);
-            }
-            await _mediator.Send(command);
 
 
-            //this.SetNotifications(NotificationType.success, "Book offer added!");
-            return Ok();
-        }
 
-        [HttpGet]
-        //[Authorize(Roles = "Owner,Admin,Moderator")]
-        [Route("Book/{encodedName}/BookOffer")]
-        public async Task<IActionResult> GetBookOffers(string encodedName)
-        {
-            var data = await _mediator.Send(new GetBookOffersOfBookQuery() { EncodedName = encodedName });
-            return Ok(data);
-        }
         [Route("Book/{encodedName}/Delete")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(string encodedName)
@@ -183,7 +159,7 @@ namespace BookSiteProject.MVC.Controllers
                 this.SetNotifications(NotificationType.error, "Failed to remove book!");
                 return BadRequest(ModelState);
             }
-        
+
             await _mediator.Send(command);
 
 
@@ -191,36 +167,5 @@ namespace BookSiteProject.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [HttpDelete]
-        [Authorize(Roles = "Admin")]
-        [Route("/BookOffer/{offerId}")]
-        public async Task<IActionResult> DeleteBookOffer(int offerId)
-        {
-            await _mediator.Send(new DeleteBookOfferCommand { OfferId = offerId});
-            return NoContent();
-
-        }
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        [Route("/BookOffer/{offerId}")]
-        public async Task<IActionResult> GetBookOffer(int offerId)
-        {
-            var offer = await _mediator.Send(new GetBookOfferByIdQuery { OfferId = offerId });
-            var model = _mapper.Map<EditBookOfferCommand>(offer);
-            return Ok(model);
-
-        }
-        [HttpPut]
-        [Authorize(Roles = "Admin")]
-        [Route("/BookOffer/{offerId}")]
-        public async Task<IActionResult> EditBookOffer(EditBookOfferCommand command)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            await _mediator.Send(command);
-            return Ok();
-        }
     }
 }

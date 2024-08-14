@@ -6,23 +6,29 @@ function confirmChangeStatusModal(name,text,status) {
 }
 
 function submitChangeForm(name,status) {
-    
+
+    var text = ""
   
     $.ajax({
-        url: 'api/Category/ChangeStatus',
-        type: 'POST',
+        url: `api/categories/${name}`,
+        type: 'PATCH',
         data: 
         {
             CategoryName : name,
             Status : status
         },
         success: function (data) {
-            toastr["success"]("Changed status of category");
+            if (status === true) { text = "Category activated succesfully!"; }
+            else { text = "Category deactivated succesfully!"; }
+            toastr["success"](text);
             LoadCategories();
             $("#confirmChangeStatusModal").modal('hide');
         },
         error: function () {
-            toastr["error"]("Something went wrong");
+
+            if (status === true) { text = "Failed to activate category!"; }
+            else { text = "Failed to deactivate category!"; }
+            toastr["error"](text);
         }
     });
 

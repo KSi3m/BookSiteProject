@@ -9,7 +9,7 @@ $(document).on('click', '.delete-book-offer', function (event) {
    
         if (confirm('Are you sure you want to delete this book offer?')) {
             $.ajax({
-                url: `/BookOffer/${offerId}`,
+                url: `/api/bookoffers/${offerId}`,
                 type: 'DELETE',
                 success: function (data) {
                     toastr["success"]("Book offer deleted");

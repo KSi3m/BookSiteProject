@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(document).on('click', '.edit-category', function () {
         oldName = $(this).data('old-name');
         $.ajax({
-            url: `/api/Category/${oldName}`,
+            url: `/api/categories/${oldName}`,
             type: 'GET',
             success: function (data) {
                 $("#editCategory form input[name='NewName']").val(data.name);
@@ -21,11 +21,13 @@ $(document).ready(function () {
 
     $("#editCategory form").submit(function (event) {
         event.preventDefault();
+
         var formData = $(this).serialize();
+        var oldName = $(this).find('[name="OldName"]').val();
 
         $.ajax({
-            url: `/api/Category/Edit`,
-            type: "POST",
+            url: `/api/categories/${oldName}`,
+            type: "PUT",
             data: formData,
             success: function (data) {
 
@@ -35,21 +37,9 @@ $(document).ready(function () {
                 $("#editCategory form")[0].reset();
 
             },
-            error: function (xhr) {
-                if (xhr.responseJSON) {
-                    var errors = xhr.responseJSON;
+            error: function () {
 
-                    for (var property in errors) {
-                        if (errors.hasOwnProperty(property)) {
-                            var messages = errors[property];
-                            messages.forEach(function (message) {
-                                toastr["error"](message);
-                            });
-                        }
-                    }
-                } else {
-                    toastr["error"]("Something went wrong");
-                }
+                toastr["error"]("Unable to fetch offer details");
             }
         });
     });

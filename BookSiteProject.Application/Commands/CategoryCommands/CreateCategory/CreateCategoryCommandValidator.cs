@@ -19,6 +19,7 @@ namespace BookSiteProject.Application.Commands.CategoryCommands.CreateCategory
         {
             RuleFor(x => x.Name)
                 .NotEmpty()
+                .NotNull()
                 .MinimumLength(2)
                 .WithMessage("Name must be at least 2 characters long")
                 .MaximumLength(20)
@@ -30,7 +31,6 @@ namespace BookSiteProject.Application.Commands.CategoryCommands.CreateCategory
 
                 if (categoryFromDb != null)
                 {
-                  
                     context.AddFailure("Name", "Category with this name already exist!");
                 }
             });

@@ -6,7 +6,7 @@ using BookSiteProject.Application.Commands.CreateAuthor;
 using MediatR;
 using BookSiteProject.Application.Queries.GetAllAuthorsDto;
 
-namespace BookSiteProject.MVC.Controllers
+namespace BookSiteProject.MVC.Controllers.MVC
 {
     public class AuthorController : Controller
     {
@@ -14,7 +14,7 @@ namespace BookSiteProject.MVC.Controllers
 
         public AuthorController(IMediator mediator)
         {
-            _mediator= mediator;
+            _mediator = mediator;
         }
 
         [HttpGet]

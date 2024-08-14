@@ -15,11 +15,9 @@ function confirmDeleteModal(data) {
 
 function submitDeleteForm(name) {
     $.ajax({
-        url: '/Category/Delete', 
+        url: `api/categories/${name}`, 
         type: 'DELETE', 
-        data: {
-            CategoryName: name,
-        },
+ 
         success: function (data) {
             toastr["success"]("Category deleted");
             LoadCategories();

@@ -23,7 +23,7 @@
                 <h5 class="card-title">@item.Title</h5>
                 <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
                 <p class="card-text">@item.Description</p>
-                <a class="btn btn-primary" asp-controller="Book" asp-action="Details" asp-route-encodedName="@item.EncodedName" data-encoded-name="@item.EncodedName">Details</a>
+                <a class="btn btn-primary" asp-controller="Book" asp-action="Details" asp-route-encodedName="@item.EncodedName" >Details</a>
                 @if(item.IsEditable)
                 {
                     <a class="btn btn-info" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@item.EncodedName">Edit</a>
@@ -32,7 +32,13 @@
                 {
                     <a class="btn btn-danger" asp-controller="Book" asp-action="Delete" asp-route-encodedName="@item.EncodedName">Delete</a>
                 }
-                @*<partial name="_CreateBookOffer" model="new CreateBookOfferCommand() {} " />*@
+                @if (User.Identity.IsAuthenticated)
+                {
+                <button type="button" id="addBookOfferButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createBookOffer" data-encoded-name="@item.EncodedName">
+                    Add Book Offer
+                </button>
+                }
+                <partial name="_CreateBookOffer" model="new CreateBookOfferCommand() {} " />
                 @* @await Html.PartialAsync("_CreateBookOffer", new CreateBookOfferCommand() { BookEncodedName = item.EncodedName })*@
                
             </div>
@@ -44,5 +50,5 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    
+    <script src="~/js/Book/test.js"> </script>
 }

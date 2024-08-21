@@ -34,6 +34,7 @@ namespace BookSiteProject.Infrastructure.Repostories
         {
             return await _dbcontext.BookOffers
                 .Where(x => x.Book.EncodedName == bookEncodedName)
+                .Include(x => x.CreatedBy)
                 .ToListAsync();
         }
 

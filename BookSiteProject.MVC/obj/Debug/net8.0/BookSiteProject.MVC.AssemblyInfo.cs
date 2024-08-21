@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookSiteProject.MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2edacc029c07c43a15bd38361dc38dfb904dc1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aeca8cf58cfd738efc6f0765da064f72eda2ddf0")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookSiteProject.MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookSiteProject.MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

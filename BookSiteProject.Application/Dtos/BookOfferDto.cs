@@ -17,5 +17,7 @@ namespace BookSiteProject.Application.Dtos
         public float? Price { get; set; } 
         public DateTime DateOfCreation { get; set; }
 
+        public string? CreatedBy { get; set; }
+
     }
 }

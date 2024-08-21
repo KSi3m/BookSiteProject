@@ -40,6 +40,7 @@
                         <h5 class="card-title">Submitted at: ${formattedDate}</h5> 
                         <h5 class="card-title">Price: ${offer.price}</h5> 
                         <h5 class="card-title">Offer Status: ${OfferStatus[offer.status]}</h5> 
+                        <h5 class="card-title">Created by: ${offer.createdBy}</h5> 
                     </div>
                     ${adminButtons}
                  

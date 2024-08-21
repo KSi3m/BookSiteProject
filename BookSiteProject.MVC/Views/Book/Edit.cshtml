@@ -94,6 +94,9 @@
     <partial name="_EditBookOffer" model="new EditBookOfferCommand() {}" />
     <a asp-action="Index">Back to List</a>
 </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createBookOffer">
+    Add Book Offer
+</button>
 <p>Offers:</p>
 <div id="offers" class="row" data-encoded-name="@Model.EncodedName"></div>
 

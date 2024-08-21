@@ -71,19 +71,7 @@
             }
         </dd>
 
-        @* <td>
-            @foreach (var authorId in @model.AuthorsIds)
-            {
-                /**/
-                <span>@authorId</span>
-            <dd class="col-sm-10">
-                    
-            </dd>
-
-                <br />
-            }
-
-        </td> *@
+        
     </dl>
 </div>
 <div>
@@ -92,6 +80,34 @@
         <a class="btn btn-primary" asp-controller="Book" asp-action="Edit" asp-route-encodedName="@Model.EncodedName">Edit</a>
     }
     <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    
+</div>
+
+<div>
+    
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="filter" class="form-label">Filter offers by:</label>
+            <select id="filter" class="form-select">
+        <option value="all">All</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+    </select>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="sort" class="form-label">Sort offers by:</label>
+            <select id="sort" class="form-select">
+                <option value="date">Date Added</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+    </div>
 </div>
 
 <p>Offers:</p>

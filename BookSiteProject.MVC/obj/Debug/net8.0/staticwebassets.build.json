@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nO+So2lb3b/52/xw5raphNjMeZdxt0OzJvN4TEUEPAw=",
+  "Hash": "ULizVEplpzaEehvtYNdQsIvMdH/HsE6PkxvAAoFIR0w=",
   "Source": "BookSiteProject.MVC",
   "BasePath": "_content/BookSiteProject.MVC",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\1605025926969.jpg"
+    },
+    {
+      "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\3dd26a8f-f7d7-4570-a3df-81d58f0c344b.jpg",
+      "SourceId": "BookSiteProject.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\",
+      "BasePath": "_content/BookSiteProject.MVC",
+      "RelativePath": "images/3dd26a8f-f7d7-4570-a3df-81d58f0c344b.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3dd26a8f-f7d7-4570-a3df-81d58f0c344b.jpg"
     },
     {
       "Identity": "E:\\C#\\book\\BookSiteProject\\BookSiteProject.MVC\\wwwroot\\images\\44fdos1xwse01.jpg",

@@ -10,6 +10,7 @@
         0: 'Unavailable',
         1: 'Available'
     };
+
   
     for (const offer of offers) {
         const date = new Date(offer.dateOfCreation);
@@ -45,6 +46,11 @@
                 </div>
             `);
     }
+
+
+
+
+
 };
 
 const LoadBookOffers = () => {

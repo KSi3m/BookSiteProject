@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
 
-
     LoadBookOffers();
 
     $("#createBookOffer form").submit(function (event) {

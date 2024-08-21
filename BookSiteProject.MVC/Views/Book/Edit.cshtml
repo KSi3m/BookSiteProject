@@ -52,8 +52,7 @@
                     @foreach (var category in ViewBag.Categories)
                     {
                         @if (category.Activated){
-     
-                            <option value="@category.Value">@category.Text </option>
+                                 <option value="@category.Value">@category.Text </option>
                         }
                         else{
                             <option value="@category.Value" disabled> @category.Text</option>

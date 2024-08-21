@@ -8,10 +8,12 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\book\Delete.js" />
+    <Content Remove="wwwroot\js\book\test.js" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\js\book\Delete.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\book\test.js" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -35,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\js\book\Delete.js" />
+    <None Include="wwwroot\js\book\test.js" />
     <None Include="wwwroot\js\Category\Delete.js" />
   </ItemGroup>
 

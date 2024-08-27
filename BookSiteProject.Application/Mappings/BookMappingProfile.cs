@@ -46,7 +46,8 @@ namespace BookSiteProject.Application.Mappings
             CreateMap<BookOfferDto, BookOffer>();
             //.ReverseMap();
             CreateMap<BookOffer, BookOfferDto>()
-                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy.Email));
+                .ForMember(dest => dest.CreatedBy, opt => opt.MapFrom(src => src.CreatedBy!.Email))
+                .ForMember(dest => dest.BookName, opt => opt.MapFrom(src => src.Book.Title));
                 //.ReverseMap();
            // CreateMap<IEnumerable<BookOffer>, IEnumerable<BookOfferDto>>().ReverseMap();
 

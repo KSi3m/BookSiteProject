@@ -14,5 +14,6 @@ namespace BookSiteProject.Domain.Interfaces
         Task<BookOffer> GetBookOfferById(int offerId);
         Task Remove(BookOffer bookOffer);
         Task Commit();
+        Task<IEnumerable<BookOffer>> GetAllBookOffersOfUser(string userId); 
     }
 }

@@ -34,7 +34,7 @@ namespace BookSiteProject.Application.Commands.BookOfferCommands.CreateBookOffer
             var user = _userContext.GetCurrentUser();
             //if (user == null && (book.CreatedById != user.Id || user.IsInRole("Moderator")))
             //bool isEditable = user != null && book.CreatedById == user.Id;
-            bool isEditable = user != null ;
+            bool isEditable = user != null;
             if (!isEditable)
             {
                 return Unit.Value;

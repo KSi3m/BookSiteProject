@@ -47,7 +47,7 @@ namespace BookSiteProject.MVC.Controllers.Api
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route("bookoffers/{offerId}")]
         public async Task<IActionResult> DeleteBookOffer(int offerId)
         {
@@ -57,7 +57,7 @@ namespace BookSiteProject.MVC.Controllers.Api
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route("bookoffers/{offerId}")]
         public async Task<IActionResult> GetBookOffer(int offerId)
         {
@@ -67,7 +67,7 @@ namespace BookSiteProject.MVC.Controllers.Api
 
         }
         [HttpPut]
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [Route("bookoffers/{offerId}")]
         [Consumes("application/x-www-form-urlencoded")]
         public async Task<IActionResult> EditBookOffer([FromForm] EditBookOfferCommand command, int offerId)

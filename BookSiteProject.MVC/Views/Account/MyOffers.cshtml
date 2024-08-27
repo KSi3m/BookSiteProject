@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BookSiteProject.Application.Dtos.BookOfferDto>
+@using BookSiteProject.Application.Commands.BookOfferCommands.EditBookOffer
+
+
+@foreach (var item in Model) {
+    <partial name="~/Views/Book/_EditBookOffer.cshtml" model="new EditBookOfferCommand() {}" />
+    <div class="card border-secondary mb-3">
+        <div class="card-header">Type of offer: @item.Type</div>
+        <div class="card-body">
+            <h5 class="card-title">For Book: @item.BookName</h5>
+            <h5 class="card-title">Submitted at: @item.DateOfCreation</h5>
+            <h5 class="card-title">Price: @item.Price</h5>
+            <h5 class="card-title">Offer Status: @item.Status</h5>
+            @*<h5 class="card-title">Created by: @item.CreatedBy</h5>*@
+
+            <a class="btn btn-danger delete-book-offer" data-offer-id="@item.Id">Delete</a>
+            <a class="btn btn-info edit-book-offer" data-offer-id="@item.Id" data-bs-toggle="modal" data-bs-target="#editBookOffer">Edit</a>
+           
+        </div>
+
+       
+    </div>
+   
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="~/js/Book/Edit.js"> </script>
+
+    <script src="~/js/Book/Delete.js"> </script>
+}
+

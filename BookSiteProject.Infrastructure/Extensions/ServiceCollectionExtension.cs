@@ -1,4 +1,5 @@
-﻿using BookSiteProject.Application.Services;
+﻿using BookSiteProject.Application.ApplicationUser;
+using BookSiteProject.Application.Services;
 using BookSiteProject.Domain.Entities.Identity;
 using BookSiteProject.Domain.Interfaces;
 using BookSiteProject.Infrastructure.Persistence;
@@ -26,6 +27,7 @@ namespace BookSiteProject.Infrastructure.Extensions
             services.AddDbContext<BookSiteProjectDbContext>(options => options.UseSqlServer(connectionString));
 
             services.AddScoped<BookSiteSeeder>();
+          
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddRoles<IdentityRole>()

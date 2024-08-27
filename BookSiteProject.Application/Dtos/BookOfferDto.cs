@@ -18,6 +18,7 @@ namespace BookSiteProject.Application.Dtos
         public DateTime DateOfCreation { get; set; }
 
         public string? CreatedBy { get; set; }
+        public string? BookName { get; set; }
 
     }
 }

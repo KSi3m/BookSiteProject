@@ -65,6 +65,11 @@
         "IsRequired": false
       },
       {
+        "Name": "CreatedBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "offerId",
         "Type": "System.Int32",
         "IsRequired": true
@@ -124,6 +129,11 @@
       {
         "Name": "DateOfCreation",
         "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedBy",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

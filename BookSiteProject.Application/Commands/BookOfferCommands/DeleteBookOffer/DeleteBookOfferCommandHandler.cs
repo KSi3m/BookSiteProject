@@ -29,7 +29,10 @@ namespace BookSiteProject.Application.Commands.BookOfferCommands.DeleteBookOffer
 
             if (bookOffer == null) return Unit.Value;
 
+            var user = _userContext.GetCurrentUser();
+            bool isDeletable = user != null && (bookOffer.CreatedById == user.Id || user.IsInRole("Moderator") || user.IsInRole("Admin"));
            
+            if(!isDeletable) return Unit.Value;
             await _bookOfferRepository.Remove(bookOffer);
 
             return Unit.Value;

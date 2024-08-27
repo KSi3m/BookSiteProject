@@ -38,6 +38,14 @@ namespace BookSiteProject.Infrastructure.Repostories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<BookOffer>> GetAllBookOffersOfUser(string userId)
+        {
+            return await _dbcontext.BookOffers
+                           .Where(x => x.CreatedById == userId)
+                           .Include(x=>x.Book)
+                           .ToListAsync(); 
+        }
+
         public async Task<BookOffer> GetBookOfferById(int offerId)
         {
             return await _dbcontext.BookOffers.Where(x => x.Id == offerId).FirstOrDefaultAsync();
